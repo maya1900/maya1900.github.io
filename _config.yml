@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
-description: ''
-keywords:
-author: John Doe
-language: en
-timezone: ''
+title: 曲度小屋
+subtitle: 前端学习记录
+description: 仰望星空的人，不应该被嘲笑。
+keywords: 前端，vue，react, element-ui, javascript
+author: 马阳
+language: zh-Hans
+timezone: Asia/Shanghai
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: http://maya1900.github.io
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -28,7 +28,7 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render:
+skip_render: 
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -97,7 +97,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: butterfly
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
@@ -105,3 +105,36 @@ deploy:
   type: 'git'
   repo: git@github.com:maya1900/maya1900.github.io.git
   branch: master
+
+symbols_count_time:
+  symbols: true
+  time: true
+  total_symbols: true
+  total_time: true
+  exclude_codeblock: false
+  awl: 2
+  wpm: 275
+  suffix: "mins."
+
+# hexo-neat
+# 博文压缩
+neat_enable: true
+# 压缩html
+neat_html:
+ enable: true
+ exclude:
+# 压缩css  
+neat_css:
+ enable: true
+ exclude:
+   - '**/*.min.css'
+# 压缩js
+neat_js:
+ enable: true
+ mangle: true
+ output:
+ compress:
+ exclude:
+   - '**/*.min.js'
+   - '**/jquery.fancybox.pack.js'
+   - '**/index.js' 
