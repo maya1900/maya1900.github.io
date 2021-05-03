@@ -1,9 +1,14 @@
 ---
 title: 跨域问题--cors解决方案
 date: 2021-05-03
-tags: 跨域 cors
+tags: 
+- 跨域 
+- cors
 categories: 浏览器
-keywords: cors 跨域 浏览器
+keywords: 
+- cors 
+- 跨域 
+- 浏览器
 ---
 
 ## 一、 跨域

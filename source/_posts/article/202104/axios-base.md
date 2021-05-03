@@ -1,9 +1,13 @@
 ---
 title: axios的基础封装
 date: 2021-05-03
-tags: axios 请求
+tags: 
+- axios 
+- 请求
 categories: 网络
-keywords: axios 请求
+keywords: 
+- axios 
+- 请求
 ---
 
 ## service.js
