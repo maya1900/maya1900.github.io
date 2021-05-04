@@ -1,14 +1,15 @@
 ---
 title: axios的基础封装
-date: 2021-05-03
-tags: 
-- axios 
-- 请求
+tags:
+  - axios
+  - 请求
 categories: 网络
-cover: https://z3.ax1x.com/2021/05/04/gnoglF.png
-keywords: 
-- axios 
-- 请求
+cover: 'https://z3.ax1x.com/2021/05/04/gnoglF.png'
+keywords:
+  - axios
+  - 请求
+abbrlink: a74c6280
+date: 2021-05-03 00:00:00
 ---
 
 ## service.js

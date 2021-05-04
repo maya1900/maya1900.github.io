@@ -1,14 +1,15 @@
 ---
 title: dolphinscheduler的请求
-date: 2021-05-04
-tags: 
-- axios
-- 请求
+tags:
+  - axios
+  - 请求
 categories: 网络
-cover: https://z3.ax1x.com/2021/05/04/gnhcbq.png
-keywords: 
-- axios
-- 请求
+cover: 'https://z3.ax1x.com/2021/05/04/gnhcbq.png'
+keywords:
+  - axios
+  - 请求
+abbrlink: 132bf376
+date: 2021-05-04 00:00:00
 ---
 
 ## axios文件夹

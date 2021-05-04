@@ -1,14 +1,15 @@
 ---
 title: vue调试的三种方法
-date: 2021-05-04
-tags: 
-- vue
-- 调试
+tags:
+  - vue
+  - 调试
 categories: vue
-cover: https://z3.ax1x.com/2021/05/04/gnL9sO.png
-keywords: 
-- vue
-- 调试
+cover: 'https://z3.ax1x.com/2021/05/04/gnL9sO.png'
+keywords:
+  - vue
+  - 调试
+abbrlink: 4f07cdd0
+date: 2021-05-04 00:00:00
 ---
 
 ## 一、console.log
