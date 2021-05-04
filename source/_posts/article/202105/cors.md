@@ -5,6 +5,7 @@ tags:
 - 跨域 
 - cors
 categories: 浏览器
+cover: https://z3.ax1x.com/2021/05/04/gnoROJ.png
 keywords: 
 - cors 
 - 跨域 
