@@ -1,6 +1,8 @@
 ---
 title: about
 date: 2021-04-28 00:30:42
+type: "about"
+cover: https://z3.ax1x.com/2021/05/04/gnvcUe.png
 comments: false
 ---
 
