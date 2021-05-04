@@ -1,6 +1,7 @@
 ---
 title: about
 date: 2021-04-28 00:30:42
+type: "about"
 comments: false
 ---
 

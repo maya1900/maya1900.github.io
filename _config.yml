@@ -98,6 +98,8 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: butterfly
+plugins:
+- hexo-generate-feed
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
@@ -138,3 +140,11 @@ neat_js:
    - '**/*.min.js'
    - '**/jquery.fancybox.pack.js'
    - '**/index.js' 
+
+#Algolia
+algolia:
+  applicationID: 'S9YGX49QD8'
+  apiKey: 'b3a5487ff9691651cd7bce2a79ac8532'
+  adminApiKey: '8900b720e1696ae18f387f105f70b521'
+  indexName: 'hexo'
+  chunkSize: 5000
