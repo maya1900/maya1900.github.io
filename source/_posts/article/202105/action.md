@@ -4,7 +4,9 @@ tags:
   - 异步
   - action
 categories: vue
-cover: https://cdn.jsdelivr.net/gh/maya1900/pic@master/img/281c3ac5c2f9a4e16854b10710a02a7c.png
+cover: >-
+  https://cdn.jsdelivr.net/gh/maya1900/pic@master/img/281c3ac5c2f9a4e16854b10710a02a7c.png
+abbrlink: a0a1788d
 date: 2021-05-06 23:10:34
 ---
 

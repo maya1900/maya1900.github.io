@@ -1,11 +1,12 @@
 ---
 title: docker与k8s的基本介绍
-tags: 
-- docker
-- k8s
+tags:
+  - docker
+  - k8s
 categories: 测试
-cover: 
+abbrlink: 7ecdb826
 date: 2021-05-05 13:57:04
+cover:
 ---
 
 # 一、Docker
