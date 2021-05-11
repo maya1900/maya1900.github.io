@@ -1,13 +1,15 @@
 ---
 title: vue+axios+nodejs实现简单上传下载
 tags:
-- vue
-- axios
-- nodejs
-- 上传
-- 下载
+  - vue
+  - axios
+  - nodejs
+  - 上传
+  - 下载
 categories: 网络
-cover: https://cdn.jsdelivr.net/gh/maya1900/pic@master/img/5836a17eb9e7f5c4e2974b18f79717c0.png
+cover: >-
+  https://cdn.jsdelivr.net/gh/maya1900/pic@master/img/5836a17eb9e7f5c4e2974b18f79717c0.png
+abbrlink: 922faa63
 date: 2021-05-09 23:55:44
 ---
 

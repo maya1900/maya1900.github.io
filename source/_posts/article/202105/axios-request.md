@@ -1,10 +1,12 @@
 ---
 title: axios的五种请求方式详解
-tags: 
-- axios
-- 请求
+tags:
+  - axios
+  - 请求
 categories: 网络
-cover: https://cdn.jsdelivr.net/gh/maya1900/pic@master/img/377d8c3a1e47d5760609873be26e4073.png
+cover: >-
+  https://cdn.jsdelivr.net/gh/maya1900/pic@master/img/377d8c3a1e47d5760609873be26e4073.png
+abbrlink: 6a49ce2a
 date: 2021-05-09 09:33:12
 ---
 
