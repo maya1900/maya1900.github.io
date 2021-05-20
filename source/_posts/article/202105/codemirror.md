@@ -147,6 +147,44 @@ export default {
 </style>
 ```
 
+## 更新 2.0
+
+今天把做好的给 pm 看，pm 又说需要实现提示完后自动加上后面的花括号，额...还好不是一个难的需求，想到还有一种提示方式，于是又进行了改装，实现了功能。
+
+## 效果图
+
+[![gTRKjf.gif](https://z3.ax1x.com/2021/05/20/gTRKjf.gif)](https://imgtu.com/i/gTRKjf)
+
+## 修改代码
+
+把赋值的 list 都修改为对象的形式，然后添加一个 hintRender 的方法。
+
+```javascript
+// ...
+list.push({
+  text: e.name + '}',
+  displayText: e.name,
+  render: this.hintRender,
+});
+// ...
+```
+
+```javascript
+  hintRender (element, self, data) {
+    let div = document.createElement("div")
+    div.setAttribute("class", 'autocomplete-div')
+
+    let divText = document.createElement("div")
+    divText.setAttribute("class", 'autocomplete-name')
+    divText.innerText = data.displayText
+
+    div.appendChild(divText)
+    element.appendChild(div)
+  }
+```
+
+好，结束。
+
 ## 参考
 
 - [codemirror 入门教程](https://blog.gavinzh.com/2020/12/13/codemirror-getting-started/)
