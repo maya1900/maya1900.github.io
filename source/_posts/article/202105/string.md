@@ -1,6 +1,7 @@
 ---
 title: 复习ES6(三)：字符串的扩展 
 date: 2021-05-30 
+tags:
 - js
 - es6
 categories: js

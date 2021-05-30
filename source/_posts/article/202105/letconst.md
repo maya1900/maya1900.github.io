@@ -1,7 +1,7 @@
 ---
 title: 复习ES6(一): let/const
 date: 2021-05-30 
-tags: js,es6
+tags: 
 - js
 - es6
 categories: js
