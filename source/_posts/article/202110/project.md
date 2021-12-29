@@ -2,7 +2,7 @@
 title: 项目的一些重难点
 date: 2021-10-24
 tags:
-  - 项目
+  - idea
 categories: 其他
 cover: https://z3.ax1x.com/2021/09/12/4pMp5j.jpg
 ---

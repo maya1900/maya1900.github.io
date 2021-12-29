@@ -3,7 +3,7 @@ title: myaMusic本地音乐播放器
 date: 2021-11-21
 tags:
 - 项目
-categories: 其他
+categories: 项目
 cover: https://z3.ax1x.com/2021/11/22/oSVcIx.png
 ---
 
