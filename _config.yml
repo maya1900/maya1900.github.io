@@ -105,7 +105,9 @@ plugins:
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: 'git'
-  repo: git@github.com:maya1900/maya1900.github.io.git
+  repo:
+    github: git@github.com:maya1900/maya1900.github.io.git
+    coding: git@e.coding.net:maya1900/maya1900/maya1900.github.io.git
   branch: master
 
 symbols_count_time:
