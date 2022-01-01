@@ -30,6 +30,7 @@ jobs:
         git config --global user.email '569760498@qq.com'
         # install dependencies
         npm i -g hexo-cli # 安装hexo
+        npm i -g @cloudbase/cli ## 安装腾讯云部署
         npm install --save hexo-deployer-git
         npm i
   
@@ -37,3 +38,4 @@ jobs:
       run: |
         # publish
         hexo clean && hexo generate && hexo deploy # 执行部署程序
+        cloudbase hosting deploy . -e 'maya1900-1gfl7znh88ba4c68'
