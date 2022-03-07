@@ -1,5 +1,5 @@
 ---
-title: 再次深入git
+title: Vue.js最全知识点整理
 date: 2022-03-07
 tags:
   - vue
@@ -9,7 +9,7 @@ cover: http://image.maya1900.top/202203072208288.jpg
 
 ![](http://image.maya1900.top/202203072201229.png)
 
-# Vue.js知识点整理
+# Vue.js最全知识点整理
 
 ## 原生DOM vs jQuery函数库 vs Vue框架
 
