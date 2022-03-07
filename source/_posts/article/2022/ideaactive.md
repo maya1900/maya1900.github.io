@@ -2,9 +2,9 @@
 title: idea2021.3最新激活方法
 date: 2022-01-06
 tags:
-- idea
-  categories: 其他
-  cover: https://s4.ax1x.com/2021/12/29/TgxpGV.jpg
+  - idea
+categories: 其他
+cover: https://s4.ax1x.com/2021/12/29/TgxpGV.jpg
 ---
 
 [![TvXjwF.png](https://s4.ax1x.com/2022/01/06/TvXjwF.png)](https://imgtu.com/i/TvXjwF)
