@@ -4,10 +4,10 @@ date: 2022-03-07
 tags:
   - vue
 categories: 前端
-cover: http://image.maya1900.top/202203072208288.jpg
+cover: https://cdn.jsdelivr.net/gh/maya1900/pic@master/img/202203082052961.jpg
 ---
 
-![](http://image.maya1900.top/202203072248809.png)
+![](https://cdn.jsdelivr.net/gh/maya1900/pic@master/img/202203082053322.png)
 
 链接：https://pan.baidu.com/s/1yAMG2YG9BNK6nTq5mOsi-Q?pwd=mpi2
 
