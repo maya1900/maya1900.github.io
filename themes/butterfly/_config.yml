@@ -53,7 +53,7 @@ social:
 
 # Algolia search
 algolia_search:
-  enable: true
+  enable: false
   hits:
     per_page: 6
   labels:
@@ -63,7 +63,7 @@ algolia_search:
 
 # Local search
 local_search:
-  enable: false
+  enable: true
 
 # Math (數學)
 # --------------------------------------
@@ -416,7 +416,7 @@ footer:
   owner:
     enable: true
     since: 2021
-  custom_text:
+  custom_text: <a href="icp鏈接"><img class="icp-icon" src="https://static.dy208.cn/o_1dfilp8ruo521thr1hvf18ji17soa.png"><span>陕ICP备2022000216号</span></a>
   copyright: true # Copyright of theme and framework
 
 # Analysis

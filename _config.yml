@@ -13,7 +13,7 @@ timezone: Asia/Shanghai
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://maya1900.github.io
+url: http://maya1900.top
 permalink: /:title/
 permalink_defaults:
 pretty_urls:
@@ -28,7 +28,7 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render: 
+skip_render:
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -99,13 +99,14 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: butterfly
 plugins:
-- hexo-generate-feed
+  - hexo-generate-feed
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: 'git'
-  repo: git@github.com:maya1900/maya1900.github.io.git
+  # repo: git@github.com:maya1900/maya1900.github.io.git
+  repo: git@www.maya1900.top:/www/wwwroot/repo/hexo.git
   branch: master
 
 symbols_count_time:
@@ -116,35 +117,33 @@ symbols_count_time:
   exclude_codeblock: false
   awl: 2
   wpm: 275
-  suffix: "mins."
+  suffix: 'mins.'
 
 # hexo-neat
 # 博文压缩
 neat_enable: true
 # 压缩html
 neat_html:
- enable: true
- exclude:
-# 压缩css  
+  enable: true
+  exclude:
+# 压缩css
 neat_css:
- enable: true
- exclude:
-   - '**/*.min.css'
+  enable: true
+  exclude:
+    - '**/*.min.css'
 # 压缩js
 neat_js:
- enable: true
- mangle: true
- output:
- compress:
- exclude:
-   - '**/*.min.js'
-   - '**/jquery.fancybox.pack.js'
-   - '**/index.js' 
+  enable: true
+  mangle: true
+  output:
+  compress:
+  exclude:
+    - '**/*.min.js'
+    - '**/jquery.fancybox.pack.js'
+    - '**/index.js'
 
-#Algolia
-algolia:
-  applicationID: 'S9YGX49QD8'
-  apiKey: 'b3a5487ff9691651cd7bce2a79ac8532'
-  adminApiKey: '8900b720e1696ae18f387f105f70b521'
-  indexName: 'hexo'
-  chunkSize: 5000
+search:
+  path: search.xml
+  field: post
+  content: true
+  limit: 10000
