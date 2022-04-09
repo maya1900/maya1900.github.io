@@ -106,7 +106,7 @@ plugins:
 deploy:
   type: 'git'
   # repo: git@github.com:maya1900/maya1900.github.io.git
-  repo: git@www.maya1900.top:/www/wwwroot/repo/hexo.git
+  repo: git@120.24.185.252:/www/wwwroot/repo/hexo.git
   branch: master
 
 symbols_count_time:
