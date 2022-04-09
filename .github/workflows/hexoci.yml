@@ -12,8 +12,8 @@ jobs:
       - name: Checkout # 将仓库内master分支的内容下载到工作目录
         uses: actions/checkout@v2 # 脚本来自 https://github.com/actions/checkout
       # 下载 git submodule
-#       - uses: srt32/git-actions@v0.0.3
-#         with:
+      #       - uses: srt32/git-actions@v0.0.3
+      #         with:
 #           args: git submodule update --init --recursive
       # 使用 node:10
       - name: use Node.js 10
