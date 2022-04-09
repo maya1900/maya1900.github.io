@@ -1,40 +1,48 @@
-name: Deploy Blog
-
-on: [push] # 当有新push时运行
-
+# deploy.yml
+name: deploy blog to aliyun
+on:
+  push:
+    branches:
+      - hexo
 jobs:
-  build: # 一项叫做build的任务
-
-    runs-on: ubuntu-latest # 在最新版的Ubuntu系统下运行
-    
+  build:
+    runs-on: ubuntu-latest
     steps:
-    - name: Checkout # 将仓库内master分支的内容下载到工作目录
-      uses: actions/checkout@v2 # 脚本来自 https://github.com/actions/checkout
-      
-    - name: Use Node.js 10.x # 配置Node环境
-      uses: actions/setup-node@v2 # 配置脚本来自 https://github.com/actions/setup-node
-      with:
-        node-version: "14"
-    
-    - name: Setup Hexo env
-      env:
-        ACTION_DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY_PRI }}
-      run: |
-        # set up private key for deploy
-        mkdir -p ~/.ssh/
-        echo "$ACTION_DEPLOY_KEY" | tr -d '\r' > ~/.ssh/id_rsa # 配置秘钥
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan github.com >> ~/.ssh/known_hosts
-        # set git infomation
-        git config --global user.name 'maya1900' # 换成你自己的邮箱和名字
-        git config --global user.email '569760498@qq.com'
-        # install dependencies
-        npm i -g hexo-cli # 安装hexo
-        # npm i -g @cloudbase/cli ## 安装腾讯云部署
-        npm install --save hexo-deployer-git
-        npm i
-  
-    - name: Deploy
-      run: |
-        # publish
-        hexo clean && hexo generate && hexo deploy # 执行部署程序
+      # 切换分支
+      - name: Checkout # 将仓库内master分支的内容下载到工作目录
+        uses: actions/checkout@v2 # 脚本来自 https://github.com/actions/checkout
+      # 下载 git submodule
+      #       - uses: srt32/git-actions@v0.0.3
+      #         with:
+#           args: git submodule update --init --recursive
+      # 使用 node:10
+      - name: use Node.js 10
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10
+      # npm install
+      - name: npm install
+        run: |
+          npm install -g hexo-cli
+          npm install
+        env:
+          CI: true
+      # build
+      - name: hexo build
+        run: |
+          hexo clean
+          hexo generate
+        env:
+          CI: true
+
+      # Deploy
+      - name: Deploy
+        uses: easingthemes/ssh-deploy@v2.0.7
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.ACCESS_TOKEN }}
+          ARGS: "-avz --delete"
+          SOURCE: "public/"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: ${{ secrets.TARGET }}
+
