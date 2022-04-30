@@ -21,13 +21,13 @@ cover: https://cdn.jsdelivr.net/gh/maya1900/pic@master/img/202204301825386.jpg
 3. 创建路由组件：sk addpage 组件名
 4. 创建 vuex 子模块：sk addstore 模块名
 
-![](https://secure2.wostatic.cn/static/cDdh4BLke2T6RrefD9TxTU/image.png)
+![](https://cdn.jsdelivr.net/gh/maya1900/pic@master/img/202204301831975.png)
 
 # 效果：
 
 ![](https://cdn.jsdelivr.net/gh/maya1900/pic@master/img/202204301605870.png)
 
-![](https://secure2.wostatic.cn/static/UUa3eSggvcUYPpsRYmwss/GIF 2022-4-30 16-04-02.gif)
+![](https://cdn.jsdelivr.net/gh/maya1900/pic@master/img/202204301748645.gif)
 
 # 技术点：
 
