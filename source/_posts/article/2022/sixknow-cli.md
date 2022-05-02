@@ -6,6 +6,7 @@ tags:
   - cli
 categories: 前端
 cover: https://cdn.jsdelivr.net/gh/maya1900/pic@master/img/202204301825386.jpg
+sticky: 1
 ---
 
 # 功能：
