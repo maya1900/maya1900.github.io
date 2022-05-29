@@ -171,3 +171,5 @@ js 运行可视化：[JavaScript Tutor](https://pythontutor.com/javascript.html#
 [JavaScript 中变量存储在堆中还是栈中？](https://www.zhihu.com/question/482433315)
 
 [JavaScript 是否使用堆栈或堆进行内存分配或两者兼而有之？](https://hashnode.com/post/does-javascript-use-stack-or-heap-for-memory-allocation-or-both-cj5jl90xl01nh1twuv8ug0bjk)
+
+[v8/objects.h v8/v8 (github.com)](https://github.com/v8/v8/blob/c736a452575f406c9a05a8c202b0708cb60d43e5/src/objects.h#L9368)
