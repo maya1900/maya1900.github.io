@@ -11,5 +11,5 @@ RUN npm --registry=https://registry.npm.taobao.org install hexo-cli -g && npm in
 RUN hexo clean && hexo g
 
 # 把上一部生成的HTML文件复制到Nginx中
-COPY --from=build-env /usr/src/hexo-blog/public /usr/share/nginx/html
+COPY --from=build /usr/src/hexo-blog/public /usr/share/nginx/html
 EXPOSE 80
