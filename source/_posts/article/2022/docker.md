@@ -259,7 +259,7 @@ Tmpfs Mount 是一种特殊的挂载方式，它主要利用内存来存储数�
 
 使用数据卷容器时通过对它的引用来完成对数据卷的引用。
 
-创建新容器时使用专门的 `--volumes-from` 选项
+创建新容器时使用专门的 `--volumes-from` 选项。
 
 `docker run -d --name webapp --volumes-from appdata webapp:latest`
 
