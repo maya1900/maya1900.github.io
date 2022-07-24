@@ -36,7 +36,6 @@ jobs:
           CI: true
       # 发布
       - name: docker build
-        uses: docker://alpine:3.8
         run: |
           echo  ${{DOCKER_PASSWORD}} | docker login -u ${{DOCKER_USERNAME}} --password-stdin
           docker build -t maya1900/may-blog:latest .
