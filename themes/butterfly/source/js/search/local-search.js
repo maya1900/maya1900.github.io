@@ -123,7 +123,7 @@ window.addEventListener('load', () => {
                   dataTitle = dataTitle.replace(regS, '<span class="search-keyword">' + keyword + '</span>')
                 })
 
-                str += '<div class="local-search__hit-item"><a href="' + dataUrl.slice(0, dataUrl.length) + '" class="search-result-title">' + dataTitle + '</a>'
+                str += '<div class="local-search__hit-item"><a href="' + dataUrl.slice(1, dataUrl.length) + '" class="search-result-title">' + dataTitle + '</a>'
                 count += 1
 
                 if (dataContent !== '') {
