@@ -10,7 +10,7 @@ window.addEventListener('load', () => {
       loadFlag = true
     }
     // shortcut: ESC
-    document.addEventListener('keydown', function f (event) {
+    document.addEventListener('keydown', function f(event) {
       if (event.code === 'Escape') {
         closeSearch()
         document.removeEventListener('keydown', f)
@@ -41,7 +41,7 @@ window.addEventListener('load', () => {
     searchClickFn()
   })
 
-  function search (path) {
+  function search(path) {
     fetch(GLOBAL_CONFIG.root + path)
       .then(response => response.text())
       .then(str => new window.DOMParser().parseFromString(str, 'text/xml'))
@@ -123,7 +123,7 @@ window.addEventListener('load', () => {
                   dataTitle = dataTitle.replace(regS, '<span class="search-keyword">' + keyword + '</span>')
                 })
 
-                str += '<div class="local-search__hit-item"><a href="' + dataUrl + '" class="search-result-title">' + dataTitle + '</a>'
+                str += '<div class="local-search__hit-item"><a href="' + dataUrl.slice(0, dataUrl.length) + '" class="search-result-title">' + dataTitle + '</a>'
                 count += 1
 
                 if (dataContent !== '') {
