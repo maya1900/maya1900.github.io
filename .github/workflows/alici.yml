@@ -22,10 +22,10 @@ jobs:
       - name: Build and Push Docker Image
         env:
           IMAGE_TAG: ${{ github.sha }} # 用于标记容器版本号
+          app_name: "my-blog"
+          app_space: "maya1900"
+          app_url: "registry.cn-shenzhen.aliyuncs.com"
         run: |
-          app_name="my-blog"
-          app_url= "registry.cn-shenzhen.aliyuncs.com"
-          app_space="maya1900"
           docker build -t $app_url/$app_space/$app_name:latest .
           docker push $app_url/$app_space/$app_name:latest
       # 部署
@@ -33,6 +33,9 @@ jobs:
         uses: appleboy/ssh-action@master
         env:
           IMAGE_TAG: ${{ github.sha }}
+          app_name: "my-blog"
+          app_space: "maya1900"
+          app_url: "registry.cn-shenzhen.aliyuncs.com"
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
@@ -40,7 +43,6 @@ jobs:
           port: 22
           script: |-
             app_name="my-blog"
-            app_url= "registry.cn-shenzhen.aliyuncs.com"
             app_space="maya1900"
             if test -n "$(docker ps -a |grep $app_name)"; then
               echo "停止并且删除容器和上版本镜像"
