@@ -36,5 +36,6 @@ jobs:
           password: ${{ secrets.SERVER_PASS }}
           port: 22
           script: |-
+            cd /usr/local/abc
             pwd
 
