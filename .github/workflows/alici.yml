@@ -37,7 +37,7 @@ jobs:
           port: 22
           script: |-
             app_name="my-blog"
-            app_url= "registry.cn-shenzhen.aliyuncs.com/maya1900/my-site"
+            app_url= "registry.cn-shenzhen.aliyuncs.com/maya1900"
             if test -n "$(docker ps -a |grep $app_name)"; then
               echo "停止并且删除容器和上版本镜像"
               docker stop $app_name
@@ -48,7 +48,7 @@ jobs:
             fi
             
             echo "获取最新的镜像"
-            docker pull registry.cn-shenzhen.aliyuncs.com/maya1900/my-site:latest
+            docker pull $app_url/$app_name:latest
             echo "启动服务"
-            docker run -p 8082:80 --name $app_name $app_url/$app_name:latest
+            docker run --name $app_name -p 8082:80 $app_url/$app_name:latest
 
