@@ -23,8 +23,8 @@ jobs:
         env:
           IMAGE_TAG: ${{ github.sha }} # 用于标记容器版本号
         run: |
-          docker build -t registry.cn-shenzhen.aliyuncs.com/maya1900/my-site:$IMAGE_TAG .
-          docker push registry.cn-shenzhen.aliyuncs.com/maya1900/my-site:$IMAGE_TAG
+          docker build -t registry.cn-shenzhen.aliyuncs.com/maya1900/my-site:latest .
+          docker push registry.cn-shenzhen.aliyuncs.com/maya1900/my-site:latest
       # 部署
       - name: Login aliEcs
         uses: appleboy/ssh-action@master
@@ -36,10 +36,19 @@ jobs:
           password: ${{ secrets.SERVER_PASS }}
           port: 22
           script: |-
-            cd /usr/local/abc
-            docker-compose down
-            docker rmi maya1900/may-blog
-            docker rmi maya1900/todo
-            docker pull registry.cn-shenzhen.aliyuncs.com/maya1900/my-site:$IMAGE_TAG
-            docker-compose up
+            app_name="my-blog"
+            app_url= "registry.cn-shenzhen.aliyuncs.com/maya1900/my-site"
+            if test -n "$(docker ps -a |grep $app_name)"; then
+              echo "停止并且删除容器和上版本镜像"
+              docker stop $app_name
+              docker rm $app_name
+              docker rmi $app_url/$app_name:latest
+            else
+              echo "未检查到$app_name容器运行"
+            fi
+            
+            echo "获取最新的镜像"
+            docker pull registry.cn-shenzhen.aliyuncs.com/maya1900/my-site:latest
+            echo "启动服务"
+            docker run -p 8082:80 --name $app_name $app_url/$app_name:latest
 
