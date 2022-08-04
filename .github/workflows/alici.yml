@@ -23,8 +23,11 @@ jobs:
         env:
           IMAGE_TAG: ${{ github.sha }} # 用于标记容器版本号
         run: |
-          docker build -t registry.cn-shenzhen.aliyuncs.com/maya1900/my-site:latest .
-          docker push registry.cn-shenzhen.aliyuncs.com/maya1900/my-site:latest
+          app_name="my-blog"
+          app_url= "registry.cn-shenzhen.aliyuncs.com"
+          app_space="maya1900"
+          docker build -t $app_url/$app_space/$app_name:latest .
+          docker push $app_url/$app_space/$app_name:latest
       # 部署
       - name: Login aliEcs
         uses: appleboy/ssh-action@master
