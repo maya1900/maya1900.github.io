@@ -56,5 +56,5 @@ jobs:
             echo "获取最新的镜像"
             docker pull registry.cn-shenzhen.aliyuncs.com/$app_space/$app_name:latest
             echo "启动服务"
-            docker run --name $app_name -p 8082:80 registry.cn-shenzhen.aliyuncs.com/$app_space/$app_name:latest
+            docker run --name $app_name -p 8082:80 -d registry.cn-shenzhen.aliyuncs.com/$app_space/$app_name:latest
 
