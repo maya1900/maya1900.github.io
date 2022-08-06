@@ -5,9 +5,8 @@ tags:
   - 运维
   - docker
 categories: 运维
+cover: https://may-data.oss-cn-hangzhou.aliyuncs.com/image/202208052205279.jpeg
 ---
-
-![](https://may-data.oss-cn-hangzhou.aliyuncs.com/image/202208052205279.jpeg)
 
 # 起因
 
