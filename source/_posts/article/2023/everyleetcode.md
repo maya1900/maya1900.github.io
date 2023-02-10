@@ -195,3 +195,52 @@ let envelopes = [
 ];
 console.log(maxEnvelopes(envelopes)); // 3
 ```
+
+## 02.10
+
+[674. 最长连续递增序列 - 力扣（Leetcode）](https://leetcode.cn/problems/longest-continuous-increasing-subsequence/)
+
+思路：滑动窗口。设置左右指针，移动右指针，判断右指针和前一个值的大小，小的话就移动左指针到right位置，记录length长度。
+
+代码：
+
+```jsx
+var findLengthOfLCIS = function(nums) {
+  if(nums.length < 2) return nums.length;
+  // 滑动窗口
+  let left = 0, right = 1, len = 1
+  while(right < nums.length) {
+    if(nums[right] <= nums[right - 1]) {
+      left = right
+    }
+    len = Math.max(len, right - left + 1)
+    right++
+  }
+  return len
+}
+```
+
+[128. 最长连续序列 - 力扣（Leetcode）](https://leetcode.cn/problems/longest-consecutive-sequence/description/)
+
+思路：Set哈希。使用set去除重复元素；遍历数组，寻找序列起点，当前项-1是否存在于set没有则说明是起点，然后不断在set中查看cur+1是否存在，有则count+1，没有了，就算出了一段连续序列的长度。
+
+代码：
+
+```jsx
+var longestConsecutive = (nums) => {
+  const set = new Set(nums)
+  let max = 0
+  for(let i = 0; i < nums.length; i++) {
+    if(!set.has(nums[i] - 1)) {
+      let cur = nums[i]
+      let count = 1
+      while(set.has(cur + 1)) {
+        cur++
+        count++
+      }
+      max = Math.max(max, count)
+    }
+  }
+  return max
+}
+```
