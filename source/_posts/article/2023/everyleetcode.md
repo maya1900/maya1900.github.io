@@ -244,3 +244,49 @@ var longestConsecutive = (nums) => {
   return max
 }
 ```
+
+## 02.11
+
+[11. 盛最多水的容器 - 力扣（Leetcode）](https://leetcode.cn/problems/container-with-most-water/description/)
+
+思路：
+
+双指针。左右分别在数组两端，不断逼近中间，计算面积，比前一次大的更新面积值，最后返回。
+
+代码：
+
+```jsx
+var maxArea = function(height) {
+  let left = 0, right = height.length - 1, res = 0
+  while(left < right) {
+    const curArea = (right - left) * Math.min(height[left], height[right])
+    res = Math.max(res, curArea)
+    if(height[left] < height[right]) {
+      left++
+    } else {
+      right--
+    }
+  }
+  return res
+}
+```
+
+[26. 删除有序数组中的重复项 - 力扣（Leetcode）](https://leetcode.cn/problems/remove-duplicates-from-sorted-array/description/)
+
+思路：
+
+快慢指针。移动右指针，左指针和右指针比较，相等继续移动右指针，不相等，右指针的值赋值给左指针的下一位，返回左指针+1的长度。
+
+代码：
+
+```jsx
+var removeDuplicates = function(nums) {
+let left = right = 0
+  while(++right < nums.length) {
+    if(nums[left] !== nums[right]) {
+      nums[++left] = nums[right]
+    }
+  }
+  return left + 1
+};
+```
