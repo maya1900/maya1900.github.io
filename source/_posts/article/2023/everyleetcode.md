@@ -5,6 +5,7 @@ tags:
 categories: js
 cover: https://may-data.oss-cn-hangzhou.aliyuncs.com/myartilepic/lofislime_1x.png
 date: 2023-02-06 22:00:00
+sticky: 2
 ---
 
 ## 02.06
@@ -289,4 +290,34 @@ let left = right = 0
   }
   return left + 1
 };
+```
+
+## 02.12
+
+[560. 和为 K 的子数组 - 力扣（Leetcode）](https://leetcode.cn/problems/subarray-sum-equals-k/description/)
+
+思路：
+
+前缀和。理解nums[0]+…+nums[i] = preSum[i],nums[0]+…+nums[j] = preSum[j],nums[i]+…nums[j] = preSum[j] - preSum[i]，preSum[i] = preSum[j] - k， map保存累加值，判断之前是否保存过pre - k，有就计数+1，没有保存map，最后返回count。
+
+代码：
+
+```jsx
+var subarraySum = function(nums, k) {
+  const map = new Map()
+  map.set(0, 1)
+  let count = 0, pre = 0
+  for(const x of nums) {
+    pre += x
+    if(map.has(pre - k)) {
+      count += map.get(pre - k)
+    }
+    if(map.has(pre)) {
+      map.set(pre, map.get(pre) + 1)
+    } else {
+      map.set(pre, 1)
+    }
+  }
+  return count
+}
 ```
