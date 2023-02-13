@@ -321,3 +321,48 @@ var subarraySum = function(nums, k) {
   return count
 }
 ```
+
+## 02.13
+
+[15. 三数之和 - 力扣（Leetcode）15. 三数之和 - 力扣（Leetcode）](https://leetcode.cn/problems/3sum/description/)
+
+思路：
+
+排序+双指针。对数组排序后，遍历数组，如nums[i] > 0，则后面三数相加不可能等于0，直接返回结果；重复元素跳过；左指针i+1,右指针len-1，左小于右时循环：左指针+右指针+当前数，和大于0，右指针左移，和小于0，左指针右移，相等保存解，同时判断左右边界是否和下一位重复，去除重复。
+
+代码：
+
+```jsx
+var threeSum = function(nums) {
+  let res = []
+  nums.sort((a, b) => a - b)
+  for(let i = 0; i < nums.length; i++) {
+    let left = i + 1, right = nums.length - 1
+    if(nums[i] > 0) {
+      return res
+    }
+    if(i > 0 && nums[i - 1] === nums[i]) {
+      continue
+    }
+    while(left < right) {
+      const sum = nums[i] + nums[left] + nums[right]
+      if(sum < 0) {
+        left++
+      } else if(sum > 0) {
+        right--
+      } else {
+        res.push([nums[i], nums[left], nums[right]])
+        while(left < right && nums[left] == nums[left + 1]) {
+          left++
+        }
+        while(left < right && nums[right - 1] == nums[right]) {
+          right--
+        }
+        left++
+        right--
+      }
+    }
+  }
+  return res
+}
+```
