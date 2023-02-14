@@ -366,3 +366,51 @@ var threeSum = function(nums) {
   return res
 }
 ```
+
+## 02.14
+
+[55. 跳跃游戏 - 力扣（Leetcode）](https://leetcode.cn/problems/jump-game/description/)
+
+思路：
+
+贪心。遍历所有位置，更新能走到的最远位置，如果最后一个位置超过或者刚好到达最后一个下标，返回true，否则false。
+
+代码：
+
+```jsx
+var canJump = function(nums) {
+  const len = nums.length - 1
+  let step = 0
+  for(let i = 0; i <= len; i++) {
+    if(i <= step) {
+      step = Math.max(step, i + nums[i])
+      if(step >= len) {
+        return true
+      }
+    }
+  }
+  return false
+}
+```
+
+[45. 跳跃游戏 II - 力扣（Leetcode）](https://leetcode.cn/problems/jump-game-ii/description/)
+
+思路：
+
+还是贪心，max表示能跳的最远距离，end表示能跳的最远位置，steps表示步数，遍历如果i等于end，那么更新end，steps+1，最后返回steps，最后一个下标不走，所以不遍历最后一个下标。
+
+代码：
+
+```jsx
+var jump = function(nums) {
+  let max = 0, end = 0, steps = 0
+  for(let i = 0; i < nums.length - 1; i++) {
+    max = Math.max(nums[i] + i, max)
+    if(i === end) {
+      end = max
+      steps++
+    }
+  }
+  return steps
+}
+```
