@@ -414,3 +414,112 @@ var jump = function(nums) {
   return steps
 }
 ```
+
+## 02.15
+
+[234. 回文链表 - 力扣（Leetcode）](https://leetcode.cn/problems/palindrome-linked-list/description/)
+
+思路一：
+
+链表后续遍历，函数调用作为后续遍历来判断是否回文。
+
+`res = (res && (right.val === left.val))`注意
+
+代码：
+
+```jsx
+var isPalindrome = function(head) {
+    let left = head
+    function traverse(right) {
+        if (right == null) return true
+        let res = traverse(right.next)
+        res = res && (right.val === left.val)
+        left = left.next
+        return res
+    }
+    return traverse(head)
+};
+```
+
+思路二：
+
+快慢指针找中间点，然后反转链表比较两个链表是否相等来判断。
+
+代码：
+
+```jsx
+var isPalindrome = function(head) {
+  let right = reverse(findCenter(head))
+  let left = head
+  while(right != null) {
+    if(left.val !== right.val) {
+      return false
+    }
+    left = left.next
+    right = right.next
+  }
+  return true
+}
+function findCenter(head) {
+  let slow = head, fast = head
+  while(fast && fast.next != null) {
+    slow = slow.next
+    fast = fast.next.next
+  }
+  // 如果fast不等于null，说明是奇数
+  if(fast != null) {
+    slow = slow.next
+  }
+  return slow
+}
+function reverse(head) {
+  let prev = null, cur = head, next = head
+  while(cur != null) {
+    next = cur.next
+    cur.next = prev
+    prev = cur
+    cur = next
+  }
+  return prev
+}
+```
+
+[206. 反转链表 - 力扣（Leetcode）](https://leetcode.cn/problems/reverse-linked-list/)
+
+思路：
+
+除了利用前面的遍历，也可以利用下面的递归
+
+代码：
+
+```jsx
+var reverseList = function(head) {
+    if (head == null || head.next == null) return head;
+    const last = reverseList(head.next)
+    head.next.next = head
+    head.next = null
+    return last
+};
+```
+
+[141. 环形链表 - 力扣（Leetcode）](https://leetcode.cn/problems/linked-list-cycle/)
+
+思路：
+
+快慢指针。当快指针和慢指针相等时，说明有环形链表。
+
+代码：
+
+```jsx
+var hasCycle = function(head) {
+    let slow = head, fast = head
+  while(fast != null && fast.next != null) {
+    slow = slow.next
+    fast = fast.next.next
+    if(slow == fast) {
+      return true
+    }
+  }
+  return false
+};
+```
