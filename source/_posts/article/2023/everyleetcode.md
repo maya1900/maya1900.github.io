@@ -523,3 +523,89 @@ var hasCycle = function(head) {
   return false
 };
 ```
+
+## 02.16
+
+[23. 合并K个升序链表 - 力扣（Leetcode）](https://leetcode.cn/problems/merge-k-sorted-lists/description/)
+
+思路：
+
+分治。自低而上归并，第一次合并2个链表，第二次归并4个链表，不断合并直到合并完所有分治的链表。
+
+代码：
+
+```jsx
+var mergeKLists = function(lists) {
+  if(lists.length == 0) return null
+  return mergeArr(lists)
+}
+function mergeArr(lists) {
+  if(lists.length <= 1) return lists[0]
+  let index = Math.floor(lists.length / 2)
+  const left = mergeArr(lists.slice(0, index))
+  const right = mergeArr(lists.slice(index))
+  return mergeArr(left, right)
+}
+function merge(l, r) {
+  if(l == null && r == null) return null
+  if(l == null && r != null) return r
+  if(l != null && r == null) return l
+  let newHead = null, head = null
+  while(l != null && r != null) {
+    if(l.val < r.val) {
+      if(!head) {
+        newHead = l
+        head = l
+      } else {
+        newHead.next = l
+        newHead = newHead.next
+      }
+      l = l.next
+    } else {
+      if(!head) {
+        newHead = r
+        head = r
+      } else {
+        newHead.next = r
+        newHead = newHead.next
+      }
+      r = r.next
+    }
+  }
+  newHead.next = l ? l : r
+  return head
+}
+```
+
+[25. K 个一组翻转链表 - 力扣（Leetcode）](https://leetcode.cn/problems/reverse-nodes-in-k-group/)
+
+给你链表的头节点 `head`，每 `k` **个节点一组进行翻转，请你返回修改后的链表。
+
+思路：
+
+递归。每两组反转一次链表，直到最后完成。
+
+代码：
+
+```jsx
+var reverseKGroup = function(head, k) {
+    let a = b = head
+    for (let i = 0; i < k; i++) {
+        if (b == null) return head
+        b = b.next
+    }
+    const newHead = reverse(a, b)
+    a.next = reverseKGroup(b, k)
+    return newHead
+};
+function reverse(a, b) {
+    let prev = null, cur = next = a
+    while (cur != b) {
+        next = cur.next
+        cur.next = prev
+        prev = cur
+        cur = next
+    }
+    return prev
+}
+```
