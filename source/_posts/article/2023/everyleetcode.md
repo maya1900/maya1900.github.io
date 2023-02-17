@@ -201,49 +201,51 @@ console.log(maxEnvelopes(envelopes)); // 3
 
 [674. 最长连续递增序列 - 力扣（Leetcode）](https://leetcode.cn/problems/longest-continuous-increasing-subsequence/)
 
-思路：滑动窗口。设置左右指针，移动右指针，判断右指针和前一个值的大小，小的话就移动左指针到right位置，记录length长度。
+思路：滑动窗口。设置左右指针，移动右指针，判断右指针和前一个值的大小，小的话就移动左指针到 right 位置，记录 length 长度。
 
 代码：
 
 ```jsx
-var findLengthOfLCIS = function(nums) {
-  if(nums.length < 2) return nums.length;
+var findLengthOfLCIS = function (nums) {
+  if (nums.length < 2) return nums.length;
   // 滑动窗口
-  let left = 0, right = 1, len = 1
-  while(right < nums.length) {
-    if(nums[right] <= nums[right - 1]) {
-      left = right
+  let left = 0,
+    right = 1,
+    len = 1;
+  while (right < nums.length) {
+    if (nums[right] <= nums[right - 1]) {
+      left = right;
     }
-    len = Math.max(len, right - left + 1)
-    right++
+    len = Math.max(len, right - left + 1);
+    right++;
   }
-  return len
-}
+  return len;
+};
 ```
 
 [128. 最长连续序列 - 力扣（Leetcode）](https://leetcode.cn/problems/longest-consecutive-sequence/description/)
 
-思路：Set哈希。使用set去除重复元素；遍历数组，寻找序列起点，当前项-1是否存在于set没有则说明是起点，然后不断在set中查看cur+1是否存在，有则count+1，没有了，就算出了一段连续序列的长度。
+思路：Set 哈希。使用 set 去除重复元素；遍历数组，寻找序列起点，当前项-1 是否存在于 set 没有则说明是起点，然后不断在 set 中查看 cur+1 是否存在，有则 count+1，没有了，就算出了一段连续序列的长度。
 
 代码：
 
 ```jsx
 var longestConsecutive = (nums) => {
-  const set = new Set(nums)
-  let max = 0
-  for(let i = 0; i < nums.length; i++) {
-    if(!set.has(nums[i] - 1)) {
-      let cur = nums[i]
-      let count = 1
-      while(set.has(cur + 1)) {
-        cur++
-        count++
+  const set = new Set(nums);
+  let max = 0;
+  for (let i = 0; i < nums.length; i++) {
+    if (!set.has(nums[i] - 1)) {
+      let cur = nums[i];
+      let count = 1;
+      while (set.has(cur + 1)) {
+        cur++;
+        count++;
       }
-      max = Math.max(max, count)
+      max = Math.max(max, count);
     }
   }
-  return max
-}
+  return max;
+};
 ```
 
 ## 02.11
@@ -257,38 +259,40 @@ var longestConsecutive = (nums) => {
 代码：
 
 ```jsx
-var maxArea = function(height) {
-  let left = 0, right = height.length - 1, res = 0
-  while(left < right) {
-    const curArea = (right - left) * Math.min(height[left], height[right])
-    res = Math.max(res, curArea)
-    if(height[left] < height[right]) {
-      left++
+var maxArea = function (height) {
+  let left = 0,
+    right = height.length - 1,
+    res = 0;
+  while (left < right) {
+    const curArea = (right - left) * Math.min(height[left], height[right]);
+    res = Math.max(res, curArea);
+    if (height[left] < height[right]) {
+      left++;
     } else {
-      right--
+      right--;
     }
   }
-  return res
-}
+  return res;
+};
 ```
 
 [26. 删除有序数组中的重复项 - 力扣（Leetcode）](https://leetcode.cn/problems/remove-duplicates-from-sorted-array/description/)
 
 思路：
 
-快慢指针。移动右指针，左指针和右指针比较，相等继续移动右指针，不相等，右指针的值赋值给左指针的下一位，返回左指针+1的长度。
+快慢指针。移动右指针，左指针和右指针比较，相等继续移动右指针，不相等，右指针的值赋值给左指针的下一位，返回左指针+1 的长度。
 
 代码：
 
 ```jsx
-var removeDuplicates = function(nums) {
-let left = right = 0
-  while(++right < nums.length) {
-    if(nums[left] !== nums[right]) {
-      nums[++left] = nums[right]
+var removeDuplicates = function (nums) {
+  let left = (right = 0);
+  while (++right < nums.length) {
+    if (nums[left] !== nums[right]) {
+      nums[++left] = nums[right];
     }
   }
-  return left + 1
+  return left + 1;
 };
 ```
 
@@ -298,28 +302,29 @@ let left = right = 0
 
 思路：
 
-前缀和。理解nums[0]+…+nums[i] = preSum[i],nums[0]+…+nums[j] = preSum[j],nums[i]+…nums[j] = preSum[j] - preSum[i]，preSum[i] = preSum[j] - k， map保存累加值，判断之前是否保存过pre - k，有就计数+1，没有保存map，最后返回count。
+前缀和。理解 nums[0]+…+nums[i] = preSum[i],nums[0]+…+nums[j] = preSum[j],nums[i]+…nums[j] = preSum[j] - preSum[i]，preSum[i] = preSum[j] - k， map 保存累加值，判断之前是否保存过 pre - k，有就计数+1，没有保存 map，最后返回 count。
 
 代码：
 
 ```jsx
-var subarraySum = function(nums, k) {
-  const map = new Map()
-  map.set(0, 1)
-  let count = 0, pre = 0
-  for(const x of nums) {
-    pre += x
-    if(map.has(pre - k)) {
-      count += map.get(pre - k)
+var subarraySum = function (nums, k) {
+  const map = new Map();
+  map.set(0, 1);
+  let count = 0,
+    pre = 0;
+  for (const x of nums) {
+    pre += x;
+    if (map.has(pre - k)) {
+      count += map.get(pre - k);
     }
-    if(map.has(pre)) {
-      map.set(pre, map.get(pre) + 1)
+    if (map.has(pre)) {
+      map.set(pre, map.get(pre) + 1);
     } else {
-      map.set(pre, 1)
+      map.set(pre, 1);
     }
   }
-  return count
-}
+  return count;
+};
 ```
 
 ## 02.13
@@ -328,43 +333,44 @@ var subarraySum = function(nums, k) {
 
 思路：
 
-排序+双指针。对数组排序后，遍历数组，如nums[i] > 0，则后面三数相加不可能等于0，直接返回结果；重复元素跳过；左指针i+1,右指针len-1，左小于右时循环：左指针+右指针+当前数，和大于0，右指针左移，和小于0，左指针右移，相等保存解，同时判断左右边界是否和下一位重复，去除重复。
+排序+双指针。对数组排序后，遍历数组，如 nums[i] > 0，则后面三数相加不可能等于 0，直接返回结果；重复元素跳过；左指针 i+1,右指针 len-1，左小于右时循环：左指针+右指针+当前数，和大于 0，右指针左移，和小于 0，左指针右移，相等保存解，同时判断左右边界是否和下一位重复，去除重复。
 
 代码：
 
 ```jsx
-var threeSum = function(nums) {
-  let res = []
-  nums.sort((a, b) => a - b)
-  for(let i = 0; i < nums.length; i++) {
-    let left = i + 1, right = nums.length - 1
-    if(nums[i] > 0) {
-      return res
+var threeSum = function (nums) {
+  let res = [];
+  nums.sort((a, b) => a - b);
+  for (let i = 0; i < nums.length; i++) {
+    let left = i + 1,
+      right = nums.length - 1;
+    if (nums[i] > 0) {
+      return res;
     }
-    if(i > 0 && nums[i - 1] === nums[i]) {
-      continue
+    if (i > 0 && nums[i - 1] === nums[i]) {
+      continue;
     }
-    while(left < right) {
-      const sum = nums[i] + nums[left] + nums[right]
-      if(sum < 0) {
-        left++
-      } else if(sum > 0) {
-        right--
+    while (left < right) {
+      const sum = nums[i] + nums[left] + nums[right];
+      if (sum < 0) {
+        left++;
+      } else if (sum > 0) {
+        right--;
       } else {
-        res.push([nums[i], nums[left], nums[right]])
-        while(left < right && nums[left] == nums[left + 1]) {
-          left++
+        res.push([nums[i], nums[left], nums[right]]);
+        while (left < right && nums[left] == nums[left + 1]) {
+          left++;
         }
-        while(left < right && nums[right - 1] == nums[right]) {
-          right--
+        while (left < right && nums[right - 1] == nums[right]) {
+          right--;
         }
-        left++
-        right--
+        left++;
+        right--;
       }
     }
   }
-  return res
-}
+  return res;
+};
 ```
 
 ## 02.14
@@ -373,46 +379,48 @@ var threeSum = function(nums) {
 
 思路：
 
-贪心。遍历所有位置，更新能走到的最远位置，如果最后一个位置超过或者刚好到达最后一个下标，返回true，否则false。
+贪心。遍历所有位置，更新能走到的最远位置，如果最后一个位置超过或者刚好到达最后一个下标，返回 true，否则 false。
 
 代码：
 
 ```jsx
-var canJump = function(nums) {
-  const len = nums.length - 1
-  let step = 0
-  for(let i = 0; i <= len; i++) {
-    if(i <= step) {
-      step = Math.max(step, i + nums[i])
-      if(step >= len) {
-        return true
+var canJump = function (nums) {
+  const len = nums.length - 1;
+  let step = 0;
+  for (let i = 0; i <= len; i++) {
+    if (i <= step) {
+      step = Math.max(step, i + nums[i]);
+      if (step >= len) {
+        return true;
       }
     }
   }
-  return false
-}
+  return false;
+};
 ```
 
 [45. 跳跃游戏 II - 力扣（Leetcode）](https://leetcode.cn/problems/jump-game-ii/description/)
 
 思路：
 
-还是贪心，max表示能跳的最远距离，end表示能跳的最远位置，steps表示步数，遍历如果i等于end，那么更新end，steps+1，最后返回steps，最后一个下标不走，所以不遍历最后一个下标。
+还是贪心，max 表示能跳的最远距离，end 表示能跳的最远位置，steps 表示步数，遍历如果 i 等于 end，那么更新 end，steps+1，最后返回 steps，最后一个下标不走，所以不遍历最后一个下标。
 
 代码：
 
 ```jsx
-var jump = function(nums) {
-  let max = 0, end = 0, steps = 0
-  for(let i = 0; i < nums.length - 1; i++) {
-    max = Math.max(nums[i] + i, max)
-    if(i === end) {
-      end = max
-      steps++
+var jump = function (nums) {
+  let max = 0,
+    end = 0,
+    steps = 0;
+  for (let i = 0; i < nums.length - 1; i++) {
+    max = Math.max(nums[i] + i, max);
+    if (i === end) {
+      end = max;
+      steps++;
     }
   }
-  return steps
-}
+  return steps;
+};
 ```
 
 ## 02.15
@@ -428,16 +436,16 @@ var jump = function(nums) {
 代码：
 
 ```jsx
-var isPalindrome = function(head) {
-    let left = head
-    function traverse(right) {
-        if (right == null) return true
-        let res = traverse(right.next)
-        res = res && (right.val === left.val)
-        left = left.next
-        return res
-    }
-    return traverse(head)
+var isPalindrome = function (head) {
+  let left = head;
+  function traverse(right) {
+    if (right == null) return true;
+    let res = traverse(right.next);
+    res = res && right.val === left.val;
+    left = left.next;
+    return res;
+  }
+  return traverse(head);
 };
 ```
 
@@ -448,39 +456,42 @@ var isPalindrome = function(head) {
 代码：
 
 ```jsx
-var isPalindrome = function(head) {
-  let right = reverse(findCenter(head))
-  let left = head
-  while(right != null) {
-    if(left.val !== right.val) {
-      return false
+var isPalindrome = function (head) {
+  let right = reverse(findCenter(head));
+  let left = head;
+  while (right != null) {
+    if (left.val !== right.val) {
+      return false;
     }
-    left = left.next
-    right = right.next
+    left = left.next;
+    right = right.next;
   }
-  return true
-}
+  return true;
+};
 function findCenter(head) {
-  let slow = head, fast = head
-  while(fast && fast.next != null) {
-    slow = slow.next
-    fast = fast.next.next
+  let slow = head,
+    fast = head;
+  while (fast && fast.next != null) {
+    slow = slow.next;
+    fast = fast.next.next;
   }
   // 如果fast不等于null，说明是奇数
-  if(fast != null) {
-    slow = slow.next
+  if (fast != null) {
+    slow = slow.next;
   }
-  return slow
+  return slow;
 }
 function reverse(head) {
-  let prev = null, cur = head, next = head
-  while(cur != null) {
-    next = cur.next
-    cur.next = prev
-    prev = cur
-    cur = next
+  let prev = null,
+    cur = head,
+    next = head;
+  while (cur != null) {
+    next = cur.next;
+    cur.next = prev;
+    prev = cur;
+    cur = next;
   }
-  return prev
+  return prev;
 }
 ```
 
@@ -493,12 +504,12 @@ function reverse(head) {
 代码：
 
 ```jsx
-var reverseList = function(head) {
-    if (head == null || head.next == null) return head;
-    const last = reverseList(head.next)
-    head.next.next = head
-    head.next = null
-    return last
+var reverseList = function (head) {
+  if (head == null || head.next == null) return head;
+  const last = reverseList(head.next);
+  head.next.next = head;
+  head.next = null;
+  return last;
 };
 ```
 
@@ -511,75 +522,77 @@ var reverseList = function(head) {
 代码：
 
 ```jsx
-var hasCycle = function(head) {
-    let slow = head, fast = head
-  while(fast != null && fast.next != null) {
-    slow = slow.next
-    fast = fast.next.next
-    if(slow == fast) {
-      return true
+var hasCycle = function (head) {
+  let slow = head,
+    fast = head;
+  while (fast != null && fast.next != null) {
+    slow = slow.next;
+    fast = fast.next.next;
+    if (slow == fast) {
+      return true;
     }
   }
-  return false
+  return false;
 };
 ```
 
 ## 02.16
 
-[23. 合并K个升序链表 - 力扣（Leetcode）](https://leetcode.cn/problems/merge-k-sorted-lists/description/)
+[23. 合并 K 个升序链表 - 力扣（Leetcode）](https://leetcode.cn/problems/merge-k-sorted-lists/description/)
 
 思路：
 
-分治。自低而上归并，第一次合并2个链表，第二次归并4个链表，不断合并直到合并完所有分治的链表。
+分治。自低而上归并，第一次合并 2 个链表，第二次归并 4 个链表，不断合并直到合并完所有分治的链表。
 
 代码：
 
 ```jsx
-var mergeKLists = function(lists) {
-  if(lists.length == 0) return null
-  return mergeArr(lists)
-}
+var mergeKLists = function (lists) {
+  if (lists.length == 0) return null;
+  return mergeArr(lists);
+};
 function mergeArr(lists) {
-  if(lists.length <= 1) return lists[0]
-  let index = Math.floor(lists.length / 2)
-  const left = mergeArr(lists.slice(0, index))
-  const right = mergeArr(lists.slice(index))
-  return mergeArr(left, right)
+  if (lists.length <= 1) return lists[0];
+  let index = Math.floor(lists.length / 2);
+  const left = mergeArr(lists.slice(0, index));
+  const right = mergeArr(lists.slice(index));
+  return mergeArr(left, right);
 }
 function merge(l, r) {
-  if(l == null && r == null) return null
-  if(l == null && r != null) return r
-  if(l != null && r == null) return l
-  let newHead = null, head = null
-  while(l != null && r != null) {
-    if(l.val < r.val) {
-      if(!head) {
-        newHead = l
-        head = l
+  if (l == null && r == null) return null;
+  if (l == null && r != null) return r;
+  if (l != null && r == null) return l;
+  let newHead = null,
+    head = null;
+  while (l != null && r != null) {
+    if (l.val < r.val) {
+      if (!head) {
+        newHead = l;
+        head = l;
       } else {
-        newHead.next = l
-        newHead = newHead.next
+        newHead.next = l;
+        newHead = newHead.next;
       }
-      l = l.next
+      l = l.next;
     } else {
-      if(!head) {
-        newHead = r
-        head = r
+      if (!head) {
+        newHead = r;
+        head = r;
       } else {
-        newHead.next = r
-        newHead = newHead.next
+        newHead.next = r;
+        newHead = newHead.next;
       }
-      r = r.next
+      r = r.next;
     }
   }
-  newHead.next = l ? l : r
-  return head
+  newHead.next = l ? l : r;
+  return head;
 }
 ```
 
 [25. K 个一组翻转链表 - 力扣（Leetcode）](https://leetcode.cn/problems/reverse-nodes-in-k-group/)
 
-给你链表的头节点 `head`，每 `k` **个节点一组进行翻转，请你返回修改后的链表。
+给你链表的头节点  `head`，每  `k` \*\*个节点一组进行翻转，请你返回修改后的链表。
 
 思路：
 
@@ -588,24 +601,107 @@ function merge(l, r) {
 代码：
 
 ```jsx
-var reverseKGroup = function(head, k) {
-    let a = b = head
-    for (let i = 0; i < k; i++) {
-        if (b == null) return head
-        b = b.next
-    }
-    const newHead = reverse(a, b)
-    a.next = reverseKGroup(b, k)
-    return newHead
+var reverseKGroup = function (head, k) {
+  let a = (b = head);
+  for (let i = 0; i < k; i++) {
+    if (b == null) return head;
+    b = b.next;
+  }
+  const newHead = reverse(a, b);
+  a.next = reverseKGroup(b, k);
+  return newHead;
 };
 function reverse(a, b) {
-    let prev = null, cur = next = a
-    while (cur != b) {
-        next = cur.next
-        cur.next = prev
-        prev = cur
-        cur = next
-    }
-    return prev
+  let prev = null,
+    cur = (next = a);
+  while (cur != b) {
+    next = cur.next;
+    cur.next = prev;
+    prev = cur;
+    cur = next;
+  }
+  return prev;
 }
+```
+
+## 02.17
+
+[148. 排序链表 - 力扣（Leetcode）](https://leetcode.cn/problems/sort-list/description/)
+
+给你链表的头结点  `head`，请将其按  **升序**排列并返回  **排序后的链表**。
+
+思路：
+
+自顶而下，归并。不断分割到每个区间只有一个节点位置，然后开始合并。
+
+代码：
+
+```jsx
+var sortList = function (head) {
+  return toSortList(head, null);
+};
+function toSortList(head, tail) {
+  if (head == null) {
+    return head;
+  }
+  if (head.next == tail) {
+    head.next = null;
+    return head;
+  }
+  let slow = head,
+    fast = head;
+  while (fast != tail) {
+    slow = slow.next;
+    fast = fast.next;
+    if (fast != tail) {
+      fast = fast.next;
+    }
+  }
+  const mid = slow;
+  return merge(toSortList(head, mid), toSortList(mid, tail));
+}
+function merge(h1, h2) {
+  const dummy = new ListNode();
+  let head = dummy;
+  while ((h1 != null) & (h2 != null)) {
+    if (h1.val <= h2.val) {
+      head.next = h1;
+      h1 = h1.next;
+    } else {
+      head.next = h2;
+      h2 = h2.next;
+    }
+    head = head.next;
+  }
+  if (h1 != null) {
+    head.next = h1;
+  }
+  if (h2 != null) {
+    head.next = h2;
+  }
+  return dummy.next;
+}
+```
+
+[160. 相交链表 - 力扣（Leetcode）](https://leetcode.cn/problems/intersection-of-two-linked-lists/description/)
+
+给你两个单链表的头节点  `headA`和  `headB`，请你找出并返回两个单链表相交的起始节点。如果两个链表不存在相交节点，返回  `null`。
+
+思路：
+
+判断是否相交，不相交一直后移。
+
+代码：
+
+```jsx
+var getIntersectionNode = function (headA, headB) {
+  if (!headA || !headB) return null;
+  let p1 = headA,
+    p2 = headB;
+  while (p1 != p2) {
+    p1 = p1 == null ? headB : p1.next;
+    p2 = p2 == null ? headA : p2.next;
+  }
+  return p1;
+};
 ```
