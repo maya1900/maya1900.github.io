@@ -705,3 +705,59 @@ var getIntersectionNode = function (headA, headB) {
   return p1;
 };
 ```
+
+## 02.18
+
+[236. 二叉树的最近公共祖先 - 力扣（Leetcode）](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/description/)
+
+给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。
+
+思路：
+
+深度遍历。找到最低层，如果空或者 root 是 p 或 q，返回 root；如果 left 和 right 都不为空，则说明 root 是最近公共节点；如果 left 空 right 不为空，则返回 right，反之一样；如果 left 和 right 都是空，返回任一即可。
+
+代码：
+
+```jsx
+var lowestCommonAncestor = function (root, p, q) {
+  const traverse = (root, p, q) => {
+    // 如果空或者root等于p或q，说明找到，返回root
+    if (!root || root == p || root == q) return root;
+    let left = traverse(root.left, p, q);
+    let right = traverse(root.right, p, q);
+    // 如果left和right都不为空，则说明root是最近公共节点
+    if (left != null && right != null) {
+      return root;
+    }
+    // 如果left空right不为空，则返回right，反之一样
+    //  如果left和right都是空，返回任一即可
+    if (left == null) return right;
+    return left;
+  };
+  return traverse(root, p, q);
+};
+```
+
+[700. 二叉搜索树中的搜索 - 力扣（Leetcode）](https://leetcode.cn/problems/search-in-a-binary-search-tree/)
+
+给定二叉搜索树（BST）的根节点  `root`和一个整数值  `val`。你需要在 BST 中找到节点值等于  `val`的节点。 返回以该节点为根的子树。 如果节点不存在，则返回  `null`
+ 。
+
+思路：
+
+二叉搜索树满足：左子树所有节点小于根元素；右子树所有节点大于根元素，递归或者迭代找出值即可。
+
+代码：
+
+```jsx
+var searchBST = function (root, val) {
+  // if (!root) return null;
+  // if (val === root.val) return root;
+  // return searchBST(val < root.val ? root.left : root.right, val);
+  while (root) {
+    if (val === root.val) return root;
+    root = val < root.val ? root.left : root.right;
+  }
+  return null;
+};
+```
