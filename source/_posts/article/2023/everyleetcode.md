@@ -609,3 +609,49 @@ function reverse(a, b) {
     return prev
 }
 ```
+
+## 02.19
+
+[450. 删除二叉搜索树中的节点 - 力扣（Leetcode）](https://leetcode.cn/problems/delete-node-in-a-bst/)
+
+给定一个二叉搜索树的根节点 **root** 和一个值 **key**，删除二叉搜索树中的 **key** 对应的节点，并保证二叉搜索树的性质不变。返回二叉搜索树（有可能被更新）的根节点的引用。
+
+思路：
+
+递归。左子树所有节点小于根元素；右子树所有节点大于根元素，使用比root大的最小节点来代替它，然后删除这个节点，分多种情况讨论。最后一种情况：root有左右子树，比root大的最小节点是root的右子树的最小节点，因此找到再删除；递归删除这个节点时，因为他没有左子节点了，因此只会调用一次。
+
+代码：
+
+```jsx
+var deleteNode = function(root, key) {
+  // root空，返回空
+  if(!root) return null;
+  // root值大于key，说明key的节点在左子树中
+  if(root.val > key) {
+    root.left = deleteNode(root.left, key)
+    return root
+  }
+  // root值小于key，说明key的节点在右子树中
+  if(root.val < key) {
+    root.right = deleteNode(root.right, key)
+    return root
+  }
+  // root值等于key，root是要删除的节点
+  if(root.val === key) {
+    // root左右都没有子节点，直接删除
+    if(!root.left && !root.right) return null;
+    // root只有左节点，返回左节点
+    if(!root.right) return root.left
+    // root只有右节点，返回右节点
+    if(!root.left) return root.right
+    // 左右都有子树，得到右子树，不断遍历右子树的左子节点，找到最小一个，返回
+    let successor = root.right
+    while(successor.left) successor = successor.left;
+    root.right = deleteNode(root.right, successor.val)
+    successor.right = root.right
+    successor.left = root.left
+    return successor
+  }
+  return root
+}
+```
