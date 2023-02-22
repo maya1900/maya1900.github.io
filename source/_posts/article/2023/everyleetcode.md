@@ -8,6 +8,35 @@ date: 2023-02-06 22:00:00
 sticky: 2
 ---
 
+## 02.22
+
+[452. 用最少数量的箭引爆气球 - 力扣（Leetcode）](https://leetcode.cn/problems/minimum-number-of-arrows-to-burst-balloons/)
+
+题目意思：
+
+最少的数字和集合中的所有数组相交。
+
+思路：
+
+将集合按右端升序排序，遍历数组，判断下一个区间左端是否小于等于第一个的右端，是说明相交，遇到不相交则 count 加 1，最后返回 count。
+
+代码：
+
+```jsx
+var findMinArrowShots = function (points) {
+  points.sort((a, b) => a[1] - b[1]);
+  let count = 0;
+  let pos = points[0][1];
+  for (let i = 0; i < points.length; i++) {
+    if (pos < points[i][0]) {
+      pos = points[i][1];
+      count++;
+    }
+  }
+  return count;
+};
+```
+
 ## 02.21
 
 [103. 二叉树的锯齿形层序遍历 - 力扣（Leetcode）](https://leetcode.cn/problems/binary-tree-zigzag-level-order-traversal/)
