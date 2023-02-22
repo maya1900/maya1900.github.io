@@ -5,7 +5,7 @@ tags:
 categories: js
 cover: https://may-data.oss-cn-hangzhou.aliyuncs.com/myartilepic/lofislime_1x.png
 date: 2023-02-06 22:00:00
-sticky: 2
+sticky: 1
 ---
 
 ## 02.22
