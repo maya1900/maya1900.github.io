@@ -8,6 +8,20 @@ date: 2023-02-07 22:00:00
 sticky: 2
 ---
 
+## 02.23
+
+I’m sorry. I know you **mean** well.
+
+You jus~~t~~ didn’t think-i~~t~~ **through**.
+
+抱歉，我理解你的好意，你只是没深思熟虑。
+
+mean well 出于好意；mean ill 怀有恶意
+
+think through 充分考虑
+
+through adv. 从头到尾，自始至终
+
 ## 02.22
 
 Something he could sell to-a private collector for-a good deal-of money.

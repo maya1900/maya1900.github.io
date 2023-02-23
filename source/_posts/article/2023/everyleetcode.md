@@ -8,6 +8,37 @@ date: 2023-02-06 22:00:00
 sticky: 1
 ---
 
+## 02.23
+
+[56. 合并区间 - 力扣（Leetcode）](https://leetcode.cn/problems/merge-intervals/description/)
+
+以数组  `intervals`表示若干个区间的集合，其中单个区间为  `intervals[i] = [starti, endi]`。请你合并所有重叠的区间，并返回  *一个不重叠的区间数组，该数组需恰好覆盖输入中的所有区间*。
+
+思路：
+
+先向左端排序，判断当前区间左端小于等于上一个区间右端，是则说明区间相交，更新上个区间的右端，不是则 push 新区间，更新暂存的上个区间。
+
+代码：
+
+```jsx
+var merge = function (intervals) {
+  const res = [];
+  intervals.sort((a, b) => a[0] - b[0]);
+  let prev = intervals[0];
+  for (let i = 1; i < intervals.length; i++) {
+    const cur = intervals[i];
+    if (prev[1] >= cur[0]) {
+      prev[1] = Math.max(cur[1], prev[1]);
+    } else {
+      res.push(prev);
+      prev = cur;
+    }
+  }
+  res.push(prev);
+  return res;
+};
+```
+
 ## 02.22
 
 [452. 用最少数量的箭引爆气球 - 力扣（Leetcode）](https://leetcode.cn/problems/minimum-number-of-arrows-to-burst-balloons/)
