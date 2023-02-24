@@ -8,6 +8,46 @@ date: 2023-02-06 22:00:00
 sticky: 1
 ---
 
+## 02.24
+
+[4. 寻找两个正序数组的中位数 - 力扣（Leetcode）](https://leetcode.cn/problems/median-of-two-sorted-arrays/description/)
+
+给定两个大小分别为 `m`和 `n`的正序（从小到大）数组 `nums1`和 `nums2`。请你找出并返回这两个正序数组的 **中位数**。
+
+思路：
+
+直接连接两个数组不符合题目要求。使用二分查找方法。找到两个数组二分的位置，比较这两个位置的四个数是否满足交叉小于等于L1<=R2 && L2 <=R1，满足则找到题解，不满足继续二分。
+
+代码：
+
+```jsx
+var findMedianSortedArrays = (nums1, nums2) => {
+  const len1 = nums1.length, len2 = nums2.length
+  if (len1 > len2) return findMedianSortedArrays(nums2, nums1) // 对长度较小的二分
+  const len = len1 + len2
+  let start = 0, end = len1 //二分的开始和结束位置
+  let partLen1, partLen2
+  while (start <= end) {
+    partLen1 = (start + end) >> 1 //  nums1的二分位置
+    partLen2 = ((len + 1) >> 1) - partLen1 // nums2的二分位置
+    // L1和R1代表nums1二分后左右两边的位置
+    // L2和R2代表nums2二分后左右两边的位置
+    let L1 = partLen1 === 0 ? -Infinity : nums1[partLen1 - 1]
+    let L2 = partLen2 === 0 ? -Infinity : nums2[partLen2 - 1]
+    let R1 = partLen1 === len1 ? Infinity : nums1[partLen1]
+    let R2 = partLen2 === len2 ? Infinity : nums2[partLen2]
+
+    if (L1 > R2) {
+      end = partLen1 - 1
+    } else if (L2 > R1) {
+      start = partLen1 + 1
+    } else { // L1<=R2 && L2 <=R1符合交叉小于等于
+      return len % 2 === 0 ? (Math.max(L1, L2) + Math.min(R1, R2)) / 2 : Math.max(L1, L2)
+    }
+  }
+}
+```
+
 ## 02.23
 
 [56. 合并区间 - 力扣（Leetcode）](https://leetcode.cn/problems/merge-intervals/description/)

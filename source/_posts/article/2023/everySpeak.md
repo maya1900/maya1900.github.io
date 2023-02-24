@@ -8,6 +8,18 @@ date: 2023-02-07 22:00:00
 sticky: 2
 ---
 
+## 02.24
+
+So basically you’re sorry because i~~t~~ didn’~~t~~ turn-ou~~t~~ the way you **wanted**.
+
+所以你是因为事情没按你想的进行才说对不起的嘛
+
+basically 基本上，说白了
+
+turn out 发生，最终成为
+
+the way 前加 in 为介词短语做方式状语；不加 in 为名词做方式状语。
+
 ## 02.23
 
 I’m sorry. I know you **mean** well.
