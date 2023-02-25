@@ -8,6 +8,18 @@ date: 2023-02-07 22:00:00
 sticky: 2
 ---
 
+## 02.25
+
+Oh, look, someone left a coupon for free movie popcorn.
+
+看，有人留了张电影院的免费爆米花券。
+
+look [lʊk]
+
+coupon [ˈkuːpɑːn] 优惠券
+
+popcorn [ˈpɑːpkɔːrn] 爆米花
+
 ## 02.24
 
 So basically you’re sorry because i~~t~~ didn’~~t~~ turn-ou~~t~~ the way you **wanted**.
