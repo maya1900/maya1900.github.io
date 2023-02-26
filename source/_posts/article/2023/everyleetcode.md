@@ -8,6 +8,51 @@ date: 2023-02-06 22:00:00
 sticky: 1
 ---
 
+## 02.26
+
+[34. 在排序数组中查找元素的第一个和最后一个位置 - 力扣（Leetcode）](https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/description/)
+
+给你一个按照非递减顺序排列的整数数组  `nums`，和一个目标值  `target`。请你找出给定目标值在数组中的开始位置和结束位置。
+
+思路：
+
+二分查找。左下标寻找第一个大于等于 target 的下标，右下标寻找第一个大于 target 的下标，然后下标减一。
+
+代码：
+
+```jsx
+const binarySearch = (nums, target, lower) => {
+  let left = 0,
+    right = nums.length - 1,
+    ans = nums.length;
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    if (nums[mid] > target || (lower && nums[mid] >= target)) {
+      right = mid - 1;
+      ans = mid;
+    } else {
+      left = mid + 1;
+    }
+  }
+  return ans;
+};
+
+var searchRange = function (nums, target) {
+  let ans = [-1, -1];
+  const leftIdx = binarySearch(nums, target, true);
+  const rightIdx = binarySearch(nums, target, false) - 1;
+  if (
+    leftIdx <= rightIdx &&
+    rightIdx < nums.length &&
+    nums[leftIdx] === target &&
+    nums[rightIdx] === target
+  ) {
+    ans = [leftIdx, rightIdx];
+  }
+  return ans;
+};
+```
+
 ## 02.25
 
 [392. 判断子序列 - 力扣（Leetcode）](https://leetcode.cn/problems/is-subsequence/)
