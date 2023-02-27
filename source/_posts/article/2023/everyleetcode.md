@@ -8,6 +8,42 @@ date: 2023-02-06 22:00:00
 sticky: 1
 ---
 
+## 02.27
+
+[300. 最长递增子序列 - 力扣（Leetcode）](https://leetcode.cn/problems/longest-increasing-subsequence/description/)
+
+思路：
+
+动态规划 5 步法。
+
+1 dp[i]的定义：dp[i]表示 i 之前最长上升子序列的长度
+
+2 状态转移方程：位置 i 的最长升序子序列等于 j 从 0 到 i-1 各个位置的最长升序子序列 + 1 的最大值`if (nums[i] > nums[j]) dp[i] = max(dp[i], dp[j] + 1)`
+
+3 dp[i]的初始化：每一个 i，对应的 dp[i]（即最长上升子序列）起始大小至少都是是 1
+
+4 确定遍历顺序：遍历 i 一定是从前向后遍历。j 其实就是 0 到 i-1，遍历 i 的循环里外层，遍历 j 则在内层
+
+5 举例推导 dp 数组
+
+代码：
+
+```jsx
+var lengthOfLIS = (nums) => {
+  let dp = Array(nums.length).fill(1);
+  let res = 1;
+  for (let i = 1; i < nums.length; i++) {
+    for (let j = 0; j < i; j++) {
+      if (nums[i] > nums[j]) {
+        dp[i] = Math.max(dp[i], dp[j] + 1);
+      }
+    }
+    res = Math.max(res, dp[i]);
+  }
+  return res;
+};
+```
+
 ## 02.26
 
 [34. 在排序数组中查找元素的第一个和最后一个位置 - 力扣（Leetcode）](https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/description/)

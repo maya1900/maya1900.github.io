@@ -8,6 +8,22 @@ date: 2023-02-07 22:00:00
 sticky: 2
 ---
 
+## 02.27
+
+I save all the letters I get. You never know what will come in handy.
+
+我会留下我收下的所有信件，没准哪天能排上用场。
+
+handy adj. 有用的，附近的
+
+handily adv. 在手边，在附近
+
+come in handy 迟早有用
+
+come in 到达
+
+handy 有用的，手边的
+
 ## 02.25
 
 Oh, look, someone left a coupon for free movie popcorn.
