@@ -8,6 +8,44 @@ date: 2023-02-06 22:00:00
 sticky: 1
 ---
 
+## 02.28
+
+[322. 零钱兑换 - 力扣（Leetcode）](https://leetcode.cn/problems/coin-change/)
+
+给你一个整数数组 `coins`，表示不同面额的硬币；以及一个整数 `amount`，表示总金额。
+
+思路：
+
+动态规划。
+
+dp[j]：凑足总额为j所需铅笔的最少个数是dp[j]
+
+凑足总额为j - coins[i]的最少个数为dp[j - coins[i]]，那么只需要加上一个钱币coins[i]即dp[j - coins[i]] + 1就是dp[j]（最少个数就加1）
+
+dp初始化个数一定是0
+
+遍历顺序：外层for循环遍历物品，内层for遍历背包或者外层for遍历背包，内层for循环遍历物品都是可以的
+
+举例推导数组。
+
+代码：
+
+```jsx
+var coinChange = (coins, amount) => {
+  if (!amount) {
+    return 0
+  }
+  const dp = new Array(amount + 1).fill(Infinity)
+  dp[0] = 0
+  for (let i = 0; i < coins.length; i++) {
+    for (let j = coins[i]; j <= amount; j++) {
+      dp[j] = Math.min(dp[j - coins[i]] + 1, dp[j])
+    }
+  }
+  return dp[amount] === Infinity ? -1 : dp[amount]
+}
+```
+
 ## 02.27
 
 [300. 最长递增子序列 - 力扣（Leetcode）](https://leetcode.cn/problems/longest-increasing-subsequence/description/)

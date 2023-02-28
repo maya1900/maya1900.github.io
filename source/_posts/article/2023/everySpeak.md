@@ -8,6 +8,22 @@ date: 2023-02-07 22:00:00
 sticky: 2
 ---
 
+## 02.28
+
+He's-a-goo~~d~~ kid. He stays-out-of trouble for the mos~~t~~ par~~t~~.
+
+他是个好孩子，几乎没惹过麻烦。
+
+stay out of 置身….之外
+
+stay out of trouble 不惹是非
+
+for the most part 在极大程度上，多半
+
+most [moʊst]
+
+part [pɑːrt]
+
 ## 02.27
 
 I save all the letters I get. You never know what will come in handy.
