@@ -8,23 +8,106 @@ date: 2023-02-06 22:00:00
 sticky: 1
 ---
 
-## 02.28
+## 03.02
 
-[322. 零钱兑换 - 力扣（Leetcode）](https://leetcode.cn/problems/coin-change/)
-
-给你一个整数数组 `coins`，表示不同面额的硬币；以及一个整数 `amount`，表示总金额。
+[72. 编辑距离 - 力扣（Leetcode）](https://leetcode.cn/problems/edit-distance/description/)
 
 思路：
 
 动态规划。
 
-dp[j]：凑足总额为j所需铅笔的最少个数是dp[j]
+dp[i][j] 表示以下标 i-1 为结尾的字符串 word1，和以下标 j-1 为结尾的字符串 word2，最近编辑距离为 dp[i][j]。
 
-凑足总额为j - coins[i]的最少个数为dp[j - coins[i]]，那么只需要加上一个钱币coins[i]即dp[j - coins[i]] + 1就是dp[j]（最少个数就加1）
+if (word1[i - 1] == word2[j - 1])不操作
+if (word1[i - 1] != word2[j - 1])增删换
 
-dp初始化个数一定是0
+dp[i][0]对 word1 里的元素全部做删除操作，即：dp[i][0] = i;同理 dp[0][j] = j;
 
-遍历顺序：外层for循环遍历物品，内层for遍历背包或者外层for遍历背包，内层for循环遍历物品都是可以的
+dp[i][j]是依赖左方，上方和左上方元素的，矩阵中一定是从左到右从上到下去遍历
+
+代码：
+
+```jsx
+const minDistance = (word1, word2) => {
+  let dp = Array.from(new Array(word1.length + 1), () =>
+    new Array(word2.length + 1).fill(0)
+  );
+  for (let i = 1; i <= word1.length; i++) {
+    dp[i][0] = i;
+  }
+  for (let j = 1; j <= word2.length; j++) {
+    dp[0][j] = j;
+  }
+  for (let i = 1; i <= word1.length; i++) {
+    for (let j = 1; j <= word2.length; j++) {
+      if (word1[i - 1] === word2[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1];
+      } else {
+        dp[i][j] = Math.min(
+          dp[i - 1][j] + 1,
+          dp[i][j - 1] + 1,
+          dp[i - 1][j - 1] + 1
+        );
+      }
+    }
+  }
+  return dp[word1.length][word2.length];
+};
+```
+
+## 03.01
+
+[1143. 最长公共子序列 - 力扣（Leetcode）](https://leetcode.cn/problems/longest-common-subsequence/)
+
+思路：
+
+动态规划。
+
+dp[i][j]：长度为[0, i - 1]的字符串 text1 与长度为[0, j - 1]的字符串 text2 的最长公共子序列为 dp[i][j]。
+
+如果 text1[i - 1] 与 text2[j - 1]相同，那么找到了一个公共元素，所以 dp[i][j] = dp[i - 1][j - 1] + 1;
+
+如果 text1[i - 1] 与 text2[j - 1]不相同，那就看看 text1[0, i - 2]与 text2[0, j - 1]的最长公共子序列 和 text1[0, i - 1]与 text2[0, j - 2]的最长公共子序列，取最大的。
+
+代码：
+
+```jsx
+var longestCommonSubsequence = function (text1, text2) {
+  const m = text1.length,
+    n = text2.length;
+  const dp = new Array(m + 1).fill(0).map(() => new Array(n + 1).fill(0));
+  for (let i = 1; i <= m; i++) {
+    const c1 = text1[i - 1];
+    for (let j = 1; j <= n; j++) {
+      const c2 = text2[j - 1];
+      if (c1 === c2) {
+        dp[i][j] = dp[i - 1][j - 1] + 1;
+      } else {
+        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+      }
+    }
+  }
+  return dp[m][n];
+};
+```
+
+## 02.28
+
+[322. 零钱兑换 - 力扣（Leetcode）](https://leetcode.cn/problems/coin-change/)
+
+给你一个整数数组  `coins`，表示不同面额的硬币；以及一个整数  `amount`，表示总金额。
+
+思路：
+
+动态规划。
+
+dp[j]：凑足总额为 j 所需铅笔的最少个数是 dp[j]
+
+凑足总额为 j - coins[i]的最少个数为 dp[j - coins[i]]，那么只需要加上一个钱币 coins[i]即 dp[j - coins[i]] + 1 就是 dp[j]（最少个数就加 1）
+
+dp 初始化个数一定是 0
+
+遍历顺序：外层 for 循环遍历物品，内层 for 遍历背包或者外层 for 遍历背包，内层 for 循环遍历物品都是可以的
 
 举例推导数组。
 
@@ -33,17 +116,17 @@ dp初始化个数一定是0
 ```jsx
 var coinChange = (coins, amount) => {
   if (!amount) {
-    return 0
+    return 0;
   }
-  const dp = new Array(amount + 1).fill(Infinity)
-  dp[0] = 0
+  const dp = new Array(amount + 1).fill(Infinity);
+  dp[0] = 0;
   for (let i = 0; i < coins.length; i++) {
     for (let j = coins[i]; j <= amount; j++) {
-      dp[j] = Math.min(dp[j - coins[i]] + 1, dp[j])
+      dp[j] = Math.min(dp[j - coins[i]] + 1, dp[j]);
     }
   }
-  return dp[amount] === Infinity ? -1 : dp[amount]
-}
+  return dp[amount] === Infinity ? -1 : dp[amount];
+};
 ```
 
 ## 02.27

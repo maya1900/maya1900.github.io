@@ -8,6 +8,28 @@ date: 2023-02-07 22:00:00
 sticky: 2
 ---
 
+## 03.02
+
+Okey, those-earrings loo~~k~~ li~~ke~~ **creepy**, **tiny, weir~~d~~** hands.
+
+那些耳环看起来像一双古怪的小手。
+
+earring 耳环
+
+creepy adj. 使人紧张的，令人毛骨悚然的
+
+tiny [ˈtaɪni] adj. 极小的
+
+weird adj. 古怪的
+
+## 03.01
+
+He move~~d~~ like-a ca~~t~~, bu~~t~~ not-a, you know, domesticate~~d~~ ca~~t~~.
+
+他跑起来像只猫，但不是家猫。
+
+domesticated [dəˈmestɪkeɪtɪd] adj. 乐于做家事的，家养的
+
 ## 02.28
 
 He's-a-goo~~d~~ kid. He stays-out-of trouble for the mos~~t~~ par~~t~~.
