@@ -8,6 +8,30 @@ date: 2023-02-07 22:00:00
 sticky: 2
 ---
 
+## 03.04
+
+I mean, you are such a wise woman. Oh, that’s very kind-of you.
+
+你真是个有智慧的女人，谢谢你这么夸我
+
+It’s + adj. + of sb to do形容词主语是sb
+
+It’s + adj. + for sb to do 形容词主语是to do
+
+## 03.03
+
+Max, slow down. I can’~~t~~ walk any faster in Sophine’s gian~~t~~ sneakers.
+
+down [daʊn] 注意发音
+
+faster [ˈfæstər] 注意发音
+
+slow down 减速，放慢速度
+
+giant 巨大的，特大的
+
+sneaker 球鞋，运动鞋
+
 ## 03.02
 
 Okey, those-earrings loo~~k~~ li~~ke~~ **creepy**, **tiny, weir~~d~~** hands.

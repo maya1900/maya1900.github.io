@@ -8,6 +8,79 @@ date: 2023-02-06 22:00:00
 sticky: 1
 ---
 
+## 03.04
+
+[53. 最大子数组和 - 力扣（Leetcode）](https://leetcode.cn/problems/maximum-subarray/)
+
+思路：
+
+dp[i]：包括下标 i 之前的最大连续子序列和为 dp[i]
+
+dp[i - 1] + nums[i]，nums[i]加入当前连续子序列和，
+
+nums[i]，从头开始计算当前连续子序列和
+
+dp[i] = max(dp[i - 1] + nums[i], nums[i])
+
+代码：
+
+```jsx
+const maxSubArray = function (nums) {
+  const len = nums.length,
+    dp = [nums[0]];
+  let max = dp[0];
+  for (let i = 1; i < len; i++) {
+    dp[i] = Math.max(dp[i - 1] + nums[i], nums[i]);
+    max = Math.max(max, dp[i]);
+  }
+  return max;
+};
+```
+
+## 03.03
+
+[516. 最长回文子序列 - 力扣（Leetcode）](https://leetcode.cn/problems/longest-palindromic-subsequence/)
+
+思路：
+
+动态规划。
+
+dp[i][j]：字符串 s 在[i, j]范围内最长的回文子序列的长度为 dp[i][j]
+
+如果 s[i]与 s[j]相同，那么 dp[i][j] = dp[i + 1][j - 1] + 2
+
+如果 s[i]与 s[j]不相同，
+
+加入 s[j]的回文子序列长度为 dp[i + 1][j]。
+
+加入 s[i]的回文子序列长度为 dp[i][j - 1]。
+
+那么 dp[i][j]一定是取最大的，即：dp[i][j] = max(dp[i + 1][j], dp[i][j - 1]);
+
+递推公式是计算不到 i 和 j 相同时候的情况，当 i 与 j 相同，那么 dp[i][j]一定是等于 1，其他情况 dp[i][j]初始为 0 就行。
+
+dp[i][j]是依赖于 dp[i + 1][j - 1] 和 dp[i + 1][j]，遍历 i 的时候一定要从下到上遍历，这样才能保证，下一行的数据是经过计算的
+
+代码：
+
+```jsx
+var longestPalindromeSubseq = function (s) {
+  const len = s.length;
+  const dp = new Array(len).fill(0).map(() => new Array(len).fill(0));
+  for (let i = len - 1; i >= 0; i--) {
+    dp[i][i] = 1;
+    for (let j = i + 1; j < len; j++) {
+      if (s[i] === s[j]) {
+        dp[i][j] = dp[i + 1][j - 1] + 2;
+      } else {
+        dp[i][j] = Math.max(dp[i + 1][j], dp[i][j - 1]);
+      }
+    }
+  }
+  return dp[0][len - 1];
+};
+```
+
 ## 03.02
 
 [72. 编辑距离 - 力扣（Leetcode）](https://leetcode.cn/problems/edit-distance/description/)
