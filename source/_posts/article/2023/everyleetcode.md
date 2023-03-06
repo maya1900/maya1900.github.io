@@ -8,6 +8,51 @@ date: 2023-02-06 22:00:00
 sticky: 1
 ---
 
+## 03.06
+
+[122. 买卖股票的最佳时机 II - 力扣（Leetcode）](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/)
+
+思路：
+
+只需要计算出当前项减去前一项是否为正数，累加即可。计算的过程并不是交易的过程。
+
+代码：
+
+```jsx
+var maxProfit = function (prices) {
+  let res = 0;
+  for (let i = 1; i < prices.length; i++) {
+    res += Math.max(0, prices[i] - prices[i - 1]);
+  }
+  return res;
+};
+```
+
+## 03.05
+
+[121. 买卖股票的最佳时机 - 力扣（Leetcode）](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/description/)
+
+思路：
+
+一次遍历，前一个比后一个大则从最小开始；前一个减去最小的大于最大利润，则赋值给最大利润。
+
+代码：
+
+```jsx
+var maxProfit = function (prices) {
+  let res = 0,
+    min = prices[0];
+  for (let i = 1; i < prices.length; i++) {
+    if (prices[i] < min) {
+      min = prices[i];
+    } else if (prices[i] - min > res) {
+      res = prices[i] - min;
+    }
+  }
+  return res;
+};
+```
+
 ## 03.04
 
 [53. 最大子数组和 - 力扣（Leetcode）](https://leetcode.cn/problems/maximum-subarray/)

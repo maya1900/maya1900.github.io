@@ -8,15 +8,27 @@ date: 2023-02-07 22:00:00
 sticky: 2
 ---
 
+## 03.06
+
+I throught pro bono work was a Bar association requirement.
+
+我以为公益诉讼是律师协会的要求。
+
+pro bono [ˌproʊ ˈboʊnoʊ] 无偿的，为了公益
+
+bar n. 律师职业
+
+association 协会，社团
+
 ## 03.04
 
 I mean, you are such a wise woman. Oh, that’s very kind-of you.
 
 你真是个有智慧的女人，谢谢你这么夸我
 
-It’s + adj. + of sb to do形容词主语是sb
+It’s + adj. + of sb to do 形容词主语是 sb
 
-It’s + adj. + for sb to do 形容词主语是to do
+It’s + adj. + for sb to do 形容词主语是 to do
 
 ## 03.03
 
