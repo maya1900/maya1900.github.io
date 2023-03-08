@@ -8,6 +8,71 @@ date: 2023-02-06 22:00:00
 sticky: 1
 ---
 
+## 03.08
+
+[496. 下一个更大元素 I - 力扣（Leetcode）](https://leetcode.cn/problems/next-greater-element-i/description/)
+
+思路：
+
+单调栈+哈希表
+
+代码：
+
+```jsx
+var nextGreaterElement = function (nums1, nums2) {
+  const map = new Map()
+  const stack = []
+  for (let i = nums2.length - 1; i >= 0; i--) {
+    const num = nums2[i]
+    while (stack.length && num >= stack[stack.length - 1]) {
+      stack.pop()
+    }
+    map.set(num, stack.length ? stack[stack.length - 1] : - 1)
+    stack.push(num)
+  }
+  return new Array(nums1.length).fill(0).map((_, i) => map.get(nums1[i]))
+}
+```
+
+## 03.07
+
+[111. 二叉树的最小深度 - 力扣（Leetcode）](https://leetcode.cn/problems/minimum-depth-of-binary-tree/description/)
+
+思路：
+
+深度搜索与广度搜索。
+
+深度在于递归，广度在于循环。
+
+代码：
+
+```jsx
+var minDepth = function (root) {
+  // if (root == null) return 0
+  // if (root.left == null) {
+  //   return minDepth(root.right) + 1
+  // } else if (root.right == null) {
+  //   return minDepth(root.left) + 1
+  // } else {
+  //   return Math.min(minDepth(root.left), minDepth(root.right)) + 1
+  // }
+  const pre = []
+  if (root == null) return 0
+  pre.push(root)
+  let depth = 0
+  while (pre.length != 0) {
+    depth++
+    for (let i = 0; i < pre.length; i++) {
+      const cur = pre.shift()
+      if (cur.left) pre.push(cur.elft)
+      if (cur.right) pre.push(cur.right)
+      if (cur.left == null && cur.right == null) return depth
+    }
+  }
+  return depth
+}
+```
+
 ## 03.06
 
 [122. 买卖股票的最佳时机 II - 力扣（Leetcode）](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/)

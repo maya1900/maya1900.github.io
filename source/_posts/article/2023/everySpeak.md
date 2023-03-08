@@ -8,6 +8,30 @@ date: 2023-02-07 22:00:00
 sticky: 2
 ---
 
+## 03.08
+
+I’m jus~~t~~ so **tired↑**, an~~d~~ I just…
+
+probably from the meds. I **nee~~d~~** to nap.
+
+我只是太累了，我只是…可能是药物的效果，我想睡一下。
+
+nap vi.打盹，小睡
+
+from the meds from表示起因于外部事物
+
+die from 死于外部原因
+
+die of 死于自身原因
+
+## 03.07
+
+**Dixon** is sleeping with **some** girl to try to ge~~t~~ under my skin.
+
+迪克森和别的女孩上床来故意气我
+
+get under my skin 激怒我，使我不爽
+
 ## 03.06
 
 I throught pro bono work was a Bar association requirement.
