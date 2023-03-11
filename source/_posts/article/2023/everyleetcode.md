@@ -8,6 +8,95 @@ date: 2023-02-06 22:00:00
 sticky: 1
 ---
 
+## 03.11
+
+[695. 岛屿的最大面积 - 力扣（Leetcode）](https://leetcode.cn/problems/max-area-of-island/description/)
+
+思路：
+
+递归。找到面积是1的，将小岛沉没，变为0，初始化计数为1，向上下左右递归寻找小岛，返回面积。
+
+代码：
+
+```jsx
+var maxAreaOfIsland = function (grid) {
+  let result = 0
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid[0].length; j++) {
+      if (grid[i][j] === 1) {
+        const count = dfs(i, j)
+        result = Math.max(count, result)
+      }
+    }
+  }
+  function dfs(i, j) {
+    if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || grid[i][j] === 0) return 0
+    grid[i][j] = 0
+    let count = 1
+    count += dfs(i + 1, j)
+    count += dfs(i - 1, j)
+    count += dfs(i, j + 1)
+    count += dfs(i, j - 1)
+    return count
+  }
+  return result
+}
+```
+
+## 03.10
+
+[71. 简化路径 - 力扣（Leetcode）](https://leetcode.cn/problems/simplify-path/description/)
+
+思路：
+
+按"/"将输入切分，遇到空字符、'.'跳过，遇到'..'将上一次加入的路径名弹出，其他加入路径名，最后用"/"连接。
+
+代码：
+
+```jsx
+var simplifyPath = function (path) {
+  const res = []
+  for (const s of path.split('/')) {
+    if (s != '' && s != '.' && s != '..') {
+      res.push(s)
+    } else if (s == '..' && res.length > 0) {
+      res.pop()
+    }
+  }
+  return '/' + res.join('/')
+}
+```
+
+## 03.09
+
+[20. 有效的括号 - 力扣（Leetcode）](https://leetcode.cn/problems/valid-parentheses/description/)
+
+思路：
+
+map匹配。
+
+代码：
+
+```jsx
+var isValid = function (s) {
+  const map = new Map();
+  map.set('(', ')')
+  map.set('{', '}')
+  map.set('[', ']')
+  const stack = []
+  for (let i = 0; i < s.length; i++) {
+    if (['(', '{', '['].includes(s[i])) {
+      stack.push(s[i])
+    } else if (s[i] === map.get(stack[stack.length - 1])) {
+      stack.pop()
+    } else {
+      return false
+    }
+  }
+  return stack.length ? false : true
+}
+```
+
 ## 03.08
 
 [496. 下一个更大元素 I - 力扣（Leetcode）](https://leetcode.cn/problems/next-greater-element-i/description/)

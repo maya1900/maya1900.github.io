@@ -8,6 +8,44 @@ date: 2023-02-07 22:00:00
 sticky: 2
 ---
 
+## 03.11
+
+Would~you spit-out whatever you’re trying to spit-out?↑
+
+有话快说别拐弯抹角。
+
+spit 啐唾沫，吐出（食物）；怒斥
+
+spit out 吐出
+
+spit it out 爽快说出来
+
+## 03.10
+
+Would i~~t~~ be **tacky-**if-I pack~~ed~~ some **sushi**-in my **purse** for later?
+
+如果我把寿司藏到我包里晚点吃丢人吗？
+
+pack v. [pæk] 打包，装箱，包起来
+
+tacky [ˈtæki] adj. 俗气的，缺乏风度的
+
+sushi 寿司
+
+purse 手提包，手袋
+
+## 03.09
+
+We jus~~t~~ heard-everything you **said**. No, you didn’~~t~~. I had-it-on mute.
+
+我们刚全听见了，你没有，我挂了的。
+
+mute adj. 无声的，缄默的
+
+put the phone on mute
+
+set the phone to mute 调静音
+
 ## 03.08
 
 I’m jus~~t~~ so **tired↑**, an~~d~~ I just…
@@ -18,7 +56,7 @@ probably from the meds. I **nee~~d~~** to nap.
 
 nap vi.打盹，小睡
 
-from the meds from表示起因于外部事物
+from the meds from 表示起因于外部事物
 
 die from 死于外部原因
 
