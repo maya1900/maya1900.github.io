@@ -8,6 +8,18 @@ date: 2023-02-07 22:00:00
 sticky: 2
 ---
 
+## 03.13
+
+Are we really prepare~~d~~ to **obey**↑ this-instruction manual?
+
+我们是否真的准备好了去顺从这个说明书？
+
+prepare [prɪˈper]
+
+obey [əˈbeɪ] 服从，遵守
+
+manual [ˈmænjuəl] 手册，说明书
+
 ## 03.11
 
 Would~you spit-out whatever you’re trying to spit-out?↑

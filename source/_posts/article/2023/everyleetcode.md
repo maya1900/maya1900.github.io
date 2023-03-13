@@ -8,39 +8,99 @@ date: 2023-02-06 22:00:00
 sticky: 1
 ---
 
+## 03.13
+
+[46. 全排列 - 力扣（Leetcode）](https://leetcode.cn/problems/permutations/)
+
+思路：
+
+回溯算法。1 递归函数参数，2 递归终止条件，3 单层搜索逻辑
+
+代码：
+
+```jsx
+var permute = function (nums) {
+  const res = [],
+    path = [];
+  backtracking(nums, nums.length, []);
+  return res;
+  function backtracking(n, k, used) {
+    if (path.length === k) {
+      res.push(Array.from(path));
+      return;
+    }
+    for (let i = 0; i < k; i++) {
+      if (used[i]) continue;
+      path.push(n[i]);
+      used[i] = true;
+      backtracking(n, k, used);
+      path.pop();
+      used[i] = false;
+    }
+  }
+};
+console.log(permute([1, 2, 3]));
+```
+
+## 03.12
+
+[100. 相同的树 - 力扣（Leetcode）](https://leetcode.cn/problems/same-tree/description/)
+
+思路：
+
+深度遍历。
+
+代码：
+
+```jsx
+var isSameTree = function (p, q) {
+  if (p == null && q == null) return true;
+  if (p == null || q == null) return false;
+  if (p.val != q.val) return false;
+  return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+};
+```
+
 ## 03.11
 
 [695. 岛屿的最大面积 - 力扣（Leetcode）](https://leetcode.cn/problems/max-area-of-island/description/)
 
 思路：
 
-递归。找到面积是1的，将小岛沉没，变为0，初始化计数为1，向上下左右递归寻找小岛，返回面积。
+递归。找到面积是 1 的，将小岛沉没，变为 0，初始化计数为 1，向上下左右递归寻找小岛，返回面积。
 
 代码：
 
 ```jsx
 var maxAreaOfIsland = function (grid) {
-  let result = 0
+  let result = 0;
   for (let i = 0; i < grid.length; i++) {
     for (let j = 0; j < grid[0].length; j++) {
       if (grid[i][j] === 1) {
-        const count = dfs(i, j)
-        result = Math.max(count, result)
+        const count = dfs(i, j);
+        result = Math.max(count, result);
       }
     }
   }
   function dfs(i, j) {
-    if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || grid[i][j] === 0) return 0
-    grid[i][j] = 0
-    let count = 1
-    count += dfs(i + 1, j)
-    count += dfs(i - 1, j)
-    count += dfs(i, j + 1)
-    count += dfs(i, j - 1)
-    return count
+    if (
+      i < 0 ||
+      i >= grid.length ||
+      j < 0 ||
+      j >= grid[0].length ||
+      grid[i][j] === 0
+    )
+      return 0;
+    grid[i][j] = 0;
+    let count = 1;
+    count += dfs(i + 1, j);
+    count += dfs(i - 1, j);
+    count += dfs(i, j + 1);
+    count += dfs(i, j - 1);
+    return count;
   }
-  return result
-}
+  return result;
+};
 ```
 
 ## 03.10
@@ -55,16 +115,16 @@ var maxAreaOfIsland = function (grid) {
 
 ```jsx
 var simplifyPath = function (path) {
-  const res = []
+  const res = [];
   for (const s of path.split('/')) {
     if (s != '' && s != '.' && s != '..') {
-      res.push(s)
+      res.push(s);
     } else if (s == '..' && res.length > 0) {
-      res.pop()
+      res.pop();
     }
   }
-  return '/' + res.join('/')
-}
+  return '/' + res.join('/');
+};
 ```
 
 ## 03.09
@@ -73,28 +133,28 @@ var simplifyPath = function (path) {
 
 思路：
 
-map匹配。
+map 匹配。
 
 代码：
 
 ```jsx
 var isValid = function (s) {
   const map = new Map();
-  map.set('(', ')')
-  map.set('{', '}')
-  map.set('[', ']')
-  const stack = []
+  map.set('(', ')');
+  map.set('{', '}');
+  map.set('[', ']');
+  const stack = [];
   for (let i = 0; i < s.length; i++) {
     if (['(', '{', '['].includes(s[i])) {
-      stack.push(s[i])
+      stack.push(s[i]);
     } else if (s[i] === map.get(stack[stack.length - 1])) {
-      stack.pop()
+      stack.pop();
     } else {
-      return false
+      return false;
     }
   }
-  return stack.length ? false : true
-}
+  return stack.length ? false : true;
+};
 ```
 
 ## 03.08
@@ -109,18 +169,18 @@ var isValid = function (s) {
 
 ```jsx
 var nextGreaterElement = function (nums1, nums2) {
-  const map = new Map()
-  const stack = []
+  const map = new Map();
+  const stack = [];
   for (let i = nums2.length - 1; i >= 0; i--) {
-    const num = nums2[i]
+    const num = nums2[i];
     while (stack.length && num >= stack[stack.length - 1]) {
-      stack.pop()
+      stack.pop();
     }
-    map.set(num, stack.length ? stack[stack.length - 1] : - 1)
-    stack.push(num)
+    map.set(num, stack.length ? stack[stack.length - 1] : -1);
+    stack.push(num);
   }
-  return new Array(nums1.length).fill(0).map((_, i) => map.get(nums1[i]))
-}
+  return new Array(nums1.length).fill(0).map((_, i) => map.get(nums1[i]));
+};
 ```
 
 ## 03.07
@@ -145,21 +205,21 @@ var minDepth = function (root) {
   // } else {
   //   return Math.min(minDepth(root.left), minDepth(root.right)) + 1
   // }
-  const pre = []
-  if (root == null) return 0
-  pre.push(root)
-  let depth = 0
+  const pre = [];
+  if (root == null) return 0;
+  pre.push(root);
+  let depth = 0;
   while (pre.length != 0) {
-    depth++
+    depth++;
     for (let i = 0; i < pre.length; i++) {
-      const cur = pre.shift()
-      if (cur.left) pre.push(cur.elft)
-      if (cur.right) pre.push(cur.right)
-      if (cur.left == null && cur.right == null) return depth
+      const cur = pre.shift();
+      if (cur.left) pre.push(cur.elft);
+      if (cur.right) pre.push(cur.right);
+      if (cur.left == null && cur.right == null) return depth;
     }
   }
-  return depth
-}
+  return depth;
+};
 ```
 
 ## 03.06
