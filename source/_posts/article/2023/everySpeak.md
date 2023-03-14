@@ -8,6 +8,16 @@ date: 2023-02-07 22:00:00
 sticky: 2
 ---
 
+## 03.14
+
+I-already used-all my pepper spray on my neighbor’~~s~~ stupi~~d~~ **cat**.
+
+我已经把我的防狼喷雾用在邻居家的蠢猫上。
+
+pepper [ˈpepər] 胡椒粉
+
+spray [spreɪ] 喷雾，小树枝
+
 ## 03.13
 
 Are we really prepare~~d~~ to **obey**↑ this-instruction manual?

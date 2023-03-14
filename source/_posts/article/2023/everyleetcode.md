@@ -8,6 +8,125 @@ date: 2023-02-06 22:00:00
 sticky: 1
 ---
 
+## 03.14
+
+[22. 括号生成 - 力扣（Leetcode）](https://leetcode.cn/problems/generate-parentheses/)
+
+思路：
+
+回溯算法。左括号数量一定等于右括号数量。回溯算法的核心在于选择，递归，撤销选择。
+
+代码：
+
+```jsx
+var generateParenthesis = function (n) {
+  if (n === 0) return [];
+  // 记录所有组合
+  const res = [];
+  // 过程中的路径
+  let track = '';
+  // 可用的左括号和右括号数量初始化为n
+  backtrack(n, n, track, res);
+  return res;
+};
+function backtrack(left, right, track, res) {
+  // 左右不相等或者小于0，说明不合法
+  if (right < left) return;
+  if (left < 0 || right < 0) return;
+  // 左右刚好用完得到一个合法的括号组合
+  if (left == 0 && right == 0) {
+    res.push(track);
+    return;
+  }
+  // 尝试放一个左括号
+  track += '('; // 选择
+  backtrack(left - 1, right, track, res);
+  track = track.slice(0, -1); // 撤销选择
+
+  track += ')';
+  backtrack(left, right - 1, track, res);
+  track = track.slice(0, -1);
+}
+```
+
+[51. N 皇后 - 力扣（Leetcode）](https://leetcode.cn/problems/n-queens/)
+
+思路：
+
+回溯。
+
+框架：
+
+```jsx
+result = []
+def backtrack(路径，选择列表):
+    if 满足结束条件:
+        result.add(路径)
+        return
+
+    for 选择 in 选择列表:
+        做选择
+        backtrack(路径，选择列表)
+        撤销选择
+# 详细解析参见：
+# https://labuladong.github.io/article/?qno=
+```
+
+代码：
+
+```jsx
+var solveNQueens = function (n) {
+  var res = [];
+  var board = new Array(n);
+  for (var i = 0; i < n; i++) {
+    board[i] = new Array(n).fill('.');
+  }
+  backtrack(board, 0);
+  return res;
+
+  function backtrack(board, row) {
+    // 结束条件: 行等于board的长度
+    if (row == board.length) {
+      res.push(Array.from(board, (row) => row.join('')));
+      return;
+    }
+
+    var n = board.length;
+    for (var col = 0; col < n; col++) {
+      if (!isValid(board, row, col)) {
+        continue;
+      }
+      board[row][col] = 'Q';
+      backtrack(board, row + 1);
+      board[row][col] = '.';
+    }
+  }
+
+  function isValid(board, row, col) {
+    var n = board.length;
+    // 检查列是否有冲突
+    for (var i = 0; i <= row; i++) {
+      if (board[i][col] === 'Q') {
+        return false;
+      }
+    }
+    // 检查右上方是否有冲突
+    for (var i = row - 1, j = col + 1; i >= 0 && j < n; i--, j++) {
+      if (board[i][j] === 'Q') {
+        return false;
+      }
+    }
+    // 检查左上方是否有冲突
+    for (var i = row - 1, j = col - 1; (i >= 0) & (j >= 0); i--, j--) {
+      if (board[i][j] === 'Q') {
+        return false;
+      }
+    }
+    return true;
+  }
+};
+```
+
 ## 03.13
 
 [46. 全排列 - 力扣（Leetcode）](https://leetcode.cn/problems/permutations/)
