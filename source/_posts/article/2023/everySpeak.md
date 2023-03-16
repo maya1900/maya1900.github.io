@@ -8,6 +8,30 @@ date: 2023-02-07 22:00:00
 sticky: 2
 ---
 
+## 03.16
+
+I run-a shelter for victims-of human trafficking in Cambodia.
+
+我在柬埔寨经营一家贩卖人口受害者的避难所。
+
+shelter 遮蔽物，庇护处
+
+trafficking 非法交易
+
+victim 受害者
+
+## 03.15
+
+We don’t chew-on things from 30 years-ago. They don’t matter anymore.
+
+我们不会因为三十年前的旧事一直耿耿于怀。
+
+chew 咀嚼
+
+chew on 深思熟虑
+
+anymore不再，再也
+
 ## 03.14
 
 I-already used-all my pepper spray on my neighbor’~~s~~ stupi~~d~~ **cat**.
