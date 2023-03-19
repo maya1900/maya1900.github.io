@@ -8,6 +8,28 @@ date: 2023-02-07 22:00:00
 sticky: 2
 ---
 
+## 03.18
+
+Black↑, well-built↑, sunglasses. Chews-on-a **toothpick**.
+
+黑人，体格健壮，戴墨镜，嘴里叼着牙签。
+
+well-built 强壮的
+
+chew 咀嚼
+
+toothpick 牙签
+
+## 03.17
+
+They ha~~d~~ some financial problems. Maxed-ou~~t~~ four credi~~t~~ cards.
+
+他们经济上有点问题，刷爆了四张信用卡。
+
+max out 刷爆（信用卡），达到最高极限
+
+finanical 财政的，金融的
+
 ## 03.16
 
 I run-a shelter for victims-of human trafficking in Cambodia.
@@ -30,7 +52,7 @@ chew 咀嚼
 
 chew on 深思熟虑
 
-anymore不再，再也
+anymore 不再，再也
 
 ## 03.14
 

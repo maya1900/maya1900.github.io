@@ -8,6 +8,93 @@ date: 2023-02-06 22:00:00
 sticky: 1
 ---
 
+## 03.19
+
+复习：[1143. 最长公共子序列 - 力扣（Leetcode）](https://leetcode.cn/problems/longest-common-subsequence/)
+
+思路：动态规划。
+
+代码：
+
+```jsx
+var longestCommonSubsequence = function(text1, text2) {
+    const m = text1.length, n = text2.length;
+    const dp = new Array(m + 1).fill(0).map(() => new Array(n + 1).fill(0))
+    for (let i = 1; i <= m; i++) {
+        const c1 = text1[i - 1]
+        for (let j = 1; j <= n; j++) {
+        const c2 = text2[j - 1]
+        if (c1 === c2) {
+            dp[i][j] = dp[i - 1][j - 1] + 1
+        } else {
+            dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1])
+        }
+        }
+    }
+    return dp[m][n]
+};
+```
+
+## 03.18
+
+[17. 电话号码的字母组合 - 力扣（Leetcode）](https://leetcode.cn/problems/letter-combinations-of-a-phone-number/description/)
+
+思路：
+
+回溯。
+
+代码：
+
+```jsx
+var letterCombinations = function (digits) {
+  const res = []
+  const keys = ['', '', 'abc', 'def', 'ghi', 'jkl', 'mno', 'pqrs', 'tuv', 'wxyz']
+  if (digits.length) {
+    backtrack(0, [])
+  }
+  return res
+
+  function backtrack(start, track) {
+    if (track.length === digits.length) {
+      res.push(track.join(''))
+      return
+    }
+    for (let i = start; i < digits.length; i++) {
+      const digit = digits.charAt(i) - '0'
+      for (const c of keys[digit]) {
+        track.push(c)
+        backtrack(i + 1, track)
+        track.pop()
+      }
+    }
+  }
+};
+```
+
+## 03.17
+
+复习：[11. 盛最多水的容器 - 力扣（Leetcode）](https://leetcode.cn/problems/container-with-most-water/description/)
+
+思路：贪心
+
+代码：
+
+```jsx
+var maxArea = function(height) {
+    let max = 0
+    let left = 0, right = height.length - 1
+    while(left < right) {
+        max = Math.max(max, (right - left) * Math.min(height[right], height[left]))
+        if(height[right] < height[left]) {
+            right--
+        } else {
+            left++
+        }
+    }
+    return max
+};
+```
+
 ## 03.16
 
 [93. 复原 IP 地址 - 力扣（Leetcode）](https://leetcode.cn/problems/restore-ip-addresses/)
