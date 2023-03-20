@@ -8,6 +8,18 @@ date: 2023-02-07 22:00:00
 sticky: 2
 ---
 
+## 03.20
+
+Susan is what’s keeping you from realizing your full potential.
+
+是苏珊让你没法意识到自己的全部潜能。
+
+读音问题：susan，realizing ，potential
+
+realizing 意识到
+
+potential 潜能，能力
+
 ## 03.18
 
 Black↑, well-built↑, sunglasses. Chews-on-a **toothpick**.
