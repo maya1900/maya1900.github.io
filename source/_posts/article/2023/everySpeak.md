@@ -8,6 +8,28 @@ date: 2023-02-07 22:00:00
 sticky: 2
 ---
 
+## 03.22
+
+Everybody **knows** ~~h~~e’s the bigges~~t~~ party-animal in **Hollywood**.
+
+谁都知道他是好莱坞最疯的派对动物。
+
+he 的 h 被吞了，不发音，和前面的 s 连读，sis the
+
+Hollywood [ˈhɑːliwʊd] 好莱坞
+
+## 03.21
+
+Right now↑, he’s probably bouncing from ho~~t~~ chic~~k~~ to ho~~t~~ chick.
+
+现在他大概在一堆辣妹之间享受呢。
+
+bounce 弹起，反弹
+
+chick 小妞
+
+hot chick 辣妹
+
 ## 03.20
 
 Susan is what’s keeping you from realizing your full potential.

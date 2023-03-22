@@ -8,6 +8,94 @@ date: 2023-02-06 22:00:00
 sticky: 1
 ---
 
+## 03.22
+
+复习：[21. 合并两个有序链表 - 力扣（Leetcode）](https://leetcode.cn/problems/merge-two-sorted-lists/description/)
+
+思路：
+
+双指针+虚拟头节点。
+
+代码：
+
+```jsx
+var mergeTwoLists = function(list1, list2) {
+    const dummy = new ListNode()
+    let p = dummy
+    while(list1 != null && list2 != null) {
+        if(list1.val > list2.val) {
+            p.next = list2
+            list2 = list2.next
+        } else {
+            p.next = list1
+            list1 = list1.next
+        }
+        p = p.next
+    }
+    if(list1 != null) {
+        p.next = list1
+    }
+    if(list2 != null) {
+        p.next = list2
+    }
+    return dummy.next
+};
+```
+
+## 03.21
+
+[82. 删除排序链表中的重复元素 II - 力扣（Leetcode）](https://leetcode.cn/problems/remove-duplicates-from-sorted-list-ii/)
+
+思路：需要删掉重复元素，则要判断next和next.next是否相等，将所有相同的next.next删除，cur就可以指向next。
+
+代码：
+
+```jsx
+var deleteDuplicates = function (head) {
+  if (!head) {
+    return head
+  }
+  const dummy = new ListNode(0, head)
+  let cur = dummy
+  while (cur.next && cur.next.next) {
+    if (cur.next.val === cur.next.next.val) {
+      const x = cur.next.val
+      while (cur.next && cur.next.val == x) {
+        cur.next = cur.next.next
+      }
+    } else {
+      cur = cur.next
+    }
+  }
+  return dummy.next
+}
+```
+
+## 03.20
+
+[83. 删除排序链表中的重复元素 - 力扣（Leetcode）](https://leetcode.cn/problems/remove-duplicates-from-sorted-list/)
+
+思路：和上道题相似，只是不需要做next.next的处理
+
+代码：
+
+```jsx
+var deleteDuplicates = function(head) {
+  if(!head) {
+    return head
+  }
+  let cur = head
+  while(cur.next) {
+    if(cur.val == cur.next.val) {
+      cur.next = cur.next.next
+    } else {
+      cur = cur.next
+    }
+  }
+  return head
+}
+```
+
 ## 03.19
 
 复习：[1143. 最长公共子序列 - 力扣（Leetcode）](https://leetcode.cn/problems/longest-common-subsequence/)
