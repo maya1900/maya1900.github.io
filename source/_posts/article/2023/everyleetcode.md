@@ -8,6 +8,123 @@ date: 2023-02-06 22:00:00
 sticky: 1
 ---
 
+## 03.25
+
+[86. 分隔链表 - 力扣（Leetcode）](https://leetcode.cn/problems/partition-list/description/)
+
+代码：
+
+```jsx
+var partition = function (head, x) {
+  let dummy1 = new ListNode();
+  let dummy2 = new ListNode();
+  let p1 = dummy1,
+    p2 = dummy2;
+  p = head;
+  while (p != null) {
+    if (p.val >= x) {
+      p2.next = p;
+      p2 = p2.next;
+    } else {
+      p1.next = p;
+      p1 = p1.next;
+    }
+    let tmp = p.next;
+    p.next = null;
+    p = tmp;
+  }
+  p1.next = dummy2.next;
+  return dummy1.next;
+};
+```
+
+## 03.24
+
+[92. 反转链表 II - 力扣（Leetcode）](https://leetcode.cn/problems/reverse-linked-list-ii/)
+
+代码：
+
+```jsx
+var reverseBetween = function (head, left, right) {
+  // 因为头节点有可能发生变化，使用虚拟头节点可以避免复杂的分类讨论
+  const dummyNode = new ListNode(-1);
+  dummyNode.next = head;
+
+  let pre = dummyNode;
+  // 第 1 步：从虚拟头节点走 left - 1 步，来到 left 节点的前一个节点
+  // 建议写在 for 循环里，语义清晰
+  for (let i = 0; i < left - 1; i++) {
+    pre = pre.next;
+  }
+
+  // 第 2 步：从 pre 再走 right - left + 1 步，来到 right 节点
+  let rightNode = pre;
+  for (let i = 0; i < right - left + 1; i++) {
+    rightNode = rightNode.next;
+  }
+
+  // 第 3 步：切断出一个子链表（截取链表）
+  let leftNode = pre.next;
+  let curr = rightNode.next;
+
+  // 注意：切断链接
+  pre.next = null;
+  rightNode.next = null;
+
+  // 第 4 步：同第 206 题，反转链表的子区间
+  reverseLinkedList(leftNode);
+
+  // 第 5 步：接回到原来的链表中
+  pre.next = rightNode;
+  leftNode.next = curr;
+  return dummyNode.next;
+};
+
+const reverseLinkedList = (head) => {
+  let pre = null;
+  let cur = head;
+
+  while (cur) {
+    const next = cur.next;
+    cur.next = pre;
+    pre = cur;
+    cur = next;
+  }
+};
+```
+
+## 03.23
+
+[138. 复制带随机指针的链表 - 力扣（Leetcode）](https://leetcode.cn/problems/copy-list-with-random-pointer/description/)
+
+代码：
+
+```jsx
+var copyRandomList = function (head) {
+  const originToClone = new Map();
+
+  // 第一次遍历，先把所有节点克隆出来
+  for (let p = head; p !== null; p = p.next) {
+    if (!originToClone.has(p)) {
+      originToClone.set(p, new Node(p.val));
+    }
+  }
+
+  // 第二次遍历，把克隆节点的结构连接好
+  for (let p = head; p !== null; p = p.next) {
+    if (p.next !== null) {
+      originToClone.get(p).next = originToClone.get(p.next);
+    }
+    if (p.random !== null) {
+      originToClone.get(p).random = originToClone.get(p.random);
+    }
+  }
+
+  // 返回克隆之后的头结点
+  return originToClone.get(head);
+};
+```
+
 ## 03.22
 
 复习：[21. 合并两个有序链表 - 力扣（Leetcode）](https://leetcode.cn/problems/merge-two-sorted-lists/description/)
@@ -19,26 +136,26 @@ sticky: 1
 代码：
 
 ```jsx
-var mergeTwoLists = function(list1, list2) {
-    const dummy = new ListNode()
-    let p = dummy
-    while(list1 != null && list2 != null) {
-        if(list1.val > list2.val) {
-            p.next = list2
-            list2 = list2.next
-        } else {
-            p.next = list1
-            list1 = list1.next
-        }
-        p = p.next
+var mergeTwoLists = function (list1, list2) {
+  const dummy = new ListNode();
+  let p = dummy;
+  while (list1 != null && list2 != null) {
+    if (list1.val > list2.val) {
+      p.next = list2;
+      list2 = list2.next;
+    } else {
+      p.next = list1;
+      list1 = list1.next;
     }
-    if(list1 != null) {
-        p.next = list1
-    }
-    if(list2 != null) {
-        p.next = list2
-    }
-    return dummy.next
+    p = p.next;
+  }
+  if (list1 != null) {
+    p.next = list1;
+  }
+  if (list2 != null) {
+    p.next = list2;
+  }
+  return dummy.next;
 };
 ```
 
@@ -46,54 +163,54 @@ var mergeTwoLists = function(list1, list2) {
 
 [82. 删除排序链表中的重复元素 II - 力扣（Leetcode）](https://leetcode.cn/problems/remove-duplicates-from-sorted-list-ii/)
 
-思路：需要删掉重复元素，则要判断next和next.next是否相等，将所有相同的next.next删除，cur就可以指向next。
+思路：需要删掉重复元素，则要判断 next 和 next.next 是否相等，将所有相同的 next.next 删除，cur 就可以指向 next。
 
 代码：
 
 ```jsx
 var deleteDuplicates = function (head) {
   if (!head) {
-    return head
+    return head;
   }
-  const dummy = new ListNode(0, head)
-  let cur = dummy
+  const dummy = new ListNode(0, head);
+  let cur = dummy;
   while (cur.next && cur.next.next) {
     if (cur.next.val === cur.next.next.val) {
-      const x = cur.next.val
+      const x = cur.next.val;
       while (cur.next && cur.next.val == x) {
-        cur.next = cur.next.next
+        cur.next = cur.next.next;
       }
     } else {
-      cur = cur.next
+      cur = cur.next;
     }
   }
-  return dummy.next
-}
+  return dummy.next;
+};
 ```
 
 ## 03.20
 
 [83. 删除排序链表中的重复元素 - 力扣（Leetcode）](https://leetcode.cn/problems/remove-duplicates-from-sorted-list/)
 
-思路：和上道题相似，只是不需要做next.next的处理
+思路：和上道题相似，只是不需要做 next.next 的处理
 
 代码：
 
 ```jsx
-var deleteDuplicates = function(head) {
-  if(!head) {
-    return head
+var deleteDuplicates = function (head) {
+  if (!head) {
+    return head;
   }
-  let cur = head
-  while(cur.next) {
-    if(cur.val == cur.next.val) {
-      cur.next = cur.next.next
+  let cur = head;
+  while (cur.next) {
+    if (cur.val == cur.next.val) {
+      cur.next = cur.next.next;
     } else {
-      cur = cur.next
+      cur = cur.next;
     }
   }
-  return head
-}
+  return head;
+};
 ```
 
 ## 03.19
@@ -105,21 +222,22 @@ var deleteDuplicates = function(head) {
 代码：
 
 ```jsx
-var longestCommonSubsequence = function(text1, text2) {
-    const m = text1.length, n = text2.length;
-    const dp = new Array(m + 1).fill(0).map(() => new Array(n + 1).fill(0))
-    for (let i = 1; i <= m; i++) {
-        const c1 = text1[i - 1]
-        for (let j = 1; j <= n; j++) {
-        const c2 = text2[j - 1]
-        if (c1 === c2) {
-            dp[i][j] = dp[i - 1][j - 1] + 1
-        } else {
-            dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1])
-        }
-        }
+var longestCommonSubsequence = function (text1, text2) {
+  const m = text1.length,
+    n = text2.length;
+  const dp = new Array(m + 1).fill(0).map(() => new Array(n + 1).fill(0));
+  for (let i = 1; i <= m; i++) {
+    const c1 = text1[i - 1];
+    for (let j = 1; j <= n; j++) {
+      const c2 = text2[j - 1];
+      if (c1 === c2) {
+        dp[i][j] = dp[i - 1][j - 1] + 1;
+      } else {
+        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+      }
     }
-    return dp[m][n]
+  }
+  return dp[m][n];
 };
 ```
 
@@ -135,24 +253,35 @@ var longestCommonSubsequence = function(text1, text2) {
 
 ```jsx
 var letterCombinations = function (digits) {
-  const res = []
-  const keys = ['', '', 'abc', 'def', 'ghi', 'jkl', 'mno', 'pqrs', 'tuv', 'wxyz']
+  const res = [];
+  const keys = [
+    '',
+    '',
+    'abc',
+    'def',
+    'ghi',
+    'jkl',
+    'mno',
+    'pqrs',
+    'tuv',
+    'wxyz',
+  ];
   if (digits.length) {
-    backtrack(0, [])
+    backtrack(0, []);
   }
-  return res
+  return res;
 
   function backtrack(start, track) {
     if (track.length === digits.length) {
-      res.push(track.join(''))
-      return
+      res.push(track.join(''));
+      return;
     }
     for (let i = start; i < digits.length; i++) {
-      const digit = digits.charAt(i) - '0'
+      const digit = digits.charAt(i) - '0';
       for (const c of keys[digit]) {
-        track.push(c)
-        backtrack(i + 1, track)
-        track.pop()
+        track.push(c);
+        backtrack(i + 1, track);
+        track.pop();
       }
     }
   }
@@ -168,18 +297,19 @@ var letterCombinations = function (digits) {
 代码：
 
 ```jsx
-var maxArea = function(height) {
-    let max = 0
-    let left = 0, right = height.length - 1
-    while(left < right) {
-        max = Math.max(max, (right - left) * Math.min(height[right], height[left]))
-        if(height[right] < height[left]) {
-            right--
-        } else {
-            left++
-        }
+var maxArea = function (height) {
+  let max = 0;
+  let left = 0,
+    right = height.length - 1;
+  while (left < right) {
+    max = Math.max(max, (right - left) * Math.min(height[right], height[left]));
+    if (height[right] < height[left]) {
+      right--;
+    } else {
+      left++;
     }
-    return max
+  }
+  return max;
 };
 ```
 

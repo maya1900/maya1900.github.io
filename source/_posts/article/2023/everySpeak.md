@@ -8,6 +8,40 @@ date: 2023-02-07 22:00:00
 sticky: 2
 ---
 
+## 03.25
+
+And you di~~d~~n’~~t~~ see-our suspec~~t~~ **anywhere** in the vicinity?
+
+你在附近没看到嫌疑人吗？
+
+didn’t d 和 t 不发音，把 d 吞进去
+
+see our 发音 our 发 ə，连读[siːə]
+
+suspect [səˈspekt , ˈsʌspekt] 嫌疑人
+
+vicinity [vəˈsɪnəti] 周围，附近
+
+## 03.24
+
+I ha~~d~~ to put money-in the cash register jus~~t~~ to steal-i~~t~~.
+
+我都得靠自己塞钱进收银机里才能满足偷钱欲了。
+
+to 发 d 音
+
+cash 现金
+
+cash register 现金出纳机
+
+## 03.23
+
+Even-I would thin~~k~~ **twice** about dating-a 17-year old.
+
+我和 17 岁的人约会还要考虑再三呢。
+
+think twice 再三考虑
+
 ## 03.22
 
 Everybody **knows** ~~h~~e’s the bigges~~t~~ party-animal in **Hollywood**.
