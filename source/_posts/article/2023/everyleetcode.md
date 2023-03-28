@@ -8,6 +8,92 @@ date: 2023-02-06 22:00:00
 sticky: 1
 ---
 
+## 03.28
+
+[143. 重排链表 - 力扣（Leetcode）](https://leetcode.cn/problems/reorder-list/description/)
+
+思路：
+
+使用数组先存储节点，然后在进行排列。
+
+代码：
+
+```jsx
+var reorderList = function (head) {
+  if (head == null) return head;
+  let queue = [];
+  let p = head;
+  while (p) {
+    queue.push(p);
+    p = p.next;
+  }
+  while (queue.length > 2) {
+    let h = queue.shift();
+    let t = queue.pop();
+    t.next = h.next;
+    h.next = t;
+  }
+  queue[queue.length - 1].next = null;
+  return head;
+};
+```
+
+## 03.27
+
+[142. 环形链表 II - 力扣（Leetcode）](https://leetcode.cn/problems/linked-list-cycle-ii/)
+
+思路：
+
+快慢指针相遇后，将慢指针重新指向头节点走到相交点就是环起点。
+
+代码：
+
+```jsx
+var detectCycle = function (head) {
+  let fast = head,
+    slow = head;
+  while (fast != null && fast.next != null) {
+    fast = fast.next.next;
+    slow = slow.next;
+    if (fast == slow) {
+      break;
+    }
+  }
+  if (fast == null || fast.next == null) {
+    return null;
+  }
+  slow = head;
+  while (slow != fast) {
+    fast = fast.next;
+    slow = slow.next;
+  }
+  return slow;
+};
+```
+
+## 03.26
+
+[141. 环形链表 - 力扣（Leetcode）](https://leetcode.cn/problems/linked-list-cycle/)
+
+思路：判断环形，快指针走两步，慢指针走一步，然后判断有么有相遇。
+
+代码：
+
+```jsx
+var hasCycle = function (head) {
+  let slow = head,
+    fast = head;
+  while (fast != null && fast.next != null) {
+    slow = slow.next;
+    fast = fast.next.next;
+    if (slow == fast) {
+      return true;
+    }
+  }
+  return false;
+};
+```
+
 ## 03.25
 
 [86. 分隔链表 - 力扣（Leetcode）](https://leetcode.cn/problems/partition-list/description/)

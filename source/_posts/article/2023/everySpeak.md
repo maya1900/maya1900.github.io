@@ -8,6 +8,26 @@ date: 2023-02-07 22:00:00
 sticky: 2
 ---
 
+## 03.28
+
+When you say-i~~t~~ li~~ke~~ tha~~t~~↑, i~~t~~ sounds-all **sensible**.
+
+你这么说，听上去合情合理。
+
+sensible [ˈsensəbl] adj. 理智的，合理的
+
+## 03.27
+
+I had to take her call. She give me a bunch-of free apps.
+
+我必须接她电话，他送了我一堆免费软件。
+
+take a call 接电话
+
+bunch 串，束
+
+a bunch of 一群，一束， 一堆
+
 ## 03.25
 
 And you di~~d~~n’~~t~~ see-our suspec~~t~~ **anywhere** in the vicinity?
