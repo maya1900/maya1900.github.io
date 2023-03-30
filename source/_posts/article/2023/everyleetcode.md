@@ -8,6 +8,90 @@ date: 2023-02-06 22:00:00
 sticky: 1
 ---
 
+## 03.30
+
+[206. 反转链表 - 力扣（Leetcode）](https://leetcode.cn/problems/reverse-linked-list/)
+
+代码：
+
+```jsx
+var reverseList = function(head) {
+  let pre = null;
+  let cur = head;
+  while (cur != null) {
+    // [cur.next, pre, cur] = [pre, cur, cur.next];
+    const next = cur.next;
+    cur.next = pre;
+    pre = cur;
+    cur = next;
+  }
+  return pre;
+};
+var reverseList = function(head) {
+    if (head == null || head.next == null) return head;
+    const last = reverseList(head.next)
+    head.next.next = head
+    head.next = null
+    return last
+};
+```
+
+## 03.29
+
+[148. 排序链表 - 力扣（Leetcode）](https://leetcode.cn/problems/sort-list/)
+
+思路：
+
+自顶向下的归并。先归并再排序。
+
+代码：
+
+```jsx
+var sortList = function(head) {
+  return toSortList(head, null)
+}
+function toSortList(head, tail) {
+  if(head == null) {
+    return head
+  }
+  if(head.next == tail){
+    head.next = null
+    return head
+  }
+  let slow = head, fast = head
+  while(fast != tail) {
+    slow = slow.next
+    fast = fast.next
+    if(fast != tail) {
+      fast = fast.next
+    }
+  }
+  const mid = slow
+  return merge(toSortList(head, mid), toSortList(mid, tail))
+}
+function merge(h1, h2) {
+  const dummy = new ListNode()
+  let head = dummy
+  while(h1 != null & h2 != null) {
+    if(h1.val <= h2.val) {
+      head.next = h1
+      h1 = h1.next
+    } else {
+      head.next = h2
+      h2 = h2.next
+    }
+    head = head.next
+  }
+  if(h1 != null) {
+    head.next = h1
+  }
+  if(h2 != null) {
+    head.next = h2
+  }
+  return dummy.next
+}
+```
+
 ## 03.28
 
 [143. 重排链表 - 力扣（Leetcode）](https://leetcode.cn/problems/reorder-list/description/)

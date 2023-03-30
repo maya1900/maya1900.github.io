@@ -8,6 +8,32 @@ date: 2023-02-07 22:00:00
 sticky: 2
 ---
 
+## 03.30
+
+An~~d~~ maybe rip-a grape-off-a stem. I’m starving.
+
+然后顺便从葡萄串上揪一颗，我饿死了。
+
+rip /rɪp/ 撕扯
+
+rip off 扯掉，偷窃
+
+grape [ɡreɪp] 葡萄
+
+stem [stem] 茎，干
+
+starving [ˈstɑrvɪŋ] 饥饿的
+
+## 03.29
+
+Are you two exclusive or are you seeing-other people?
+
+你们俩是专属对方还是同时也跟别人约会？
+
+exclusive [ɪkˈskluːsɪv] 独有的 专属的
+
+see other people 分手，跟其他人约会
+
 ## 03.28
 
 When you say-i~~t~~ li~~ke~~ tha~~t~~↑, i~~t~~ sounds-all **sensible**.
