@@ -8,6 +8,26 @@ date: 2023-02-07 22:00:00
 sticky: 2
 ---
 
+## 04.01
+
+I thought maybe we coul~~d~~ go to dinner-or get-a drin~~k~~. Blow off some **steam**.
+
+或许我们可以一起吃晚餐或者喝点什么，舒缓下压力。
+
+blow off steam 发泄一下，舒缓压力
+
+go get dinner 两个动词间省略了 and 或者 to
+
+## 03.31
+
+I mean fixing your ~~hair~~ is not-exactly rocke~~t~~-science.
+
+扎头发其实并非难事。
+
+not exactly 根本不，一点也不
+
+rocket science 火箭学
+
 ## 03.30
 
 An~~d~~ maybe rip-a grape-off-a stem. I’m starving.

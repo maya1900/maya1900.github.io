@@ -8,6 +8,68 @@ date: 2023-02-06 22:00:00
 sticky: 1
 ---
 
+## 04.01
+
+[剑指 Offer 55 - I. 二叉树的深度 - 力扣（Leetcode）](https://leetcode.cn/problems/er-cha-shu-de-shen-du-lcof/description/)
+
+思路：
+
+1. 回溯。遍历二叉树，前序遍历depth加1，遍历过程记录最大深度，后续遍历depth减1
+2. 动态规划。输入一个节点，返回该节点的最大深度，根据左右子树最大深度推断原二叉树最大深度。
+
+代码：
+
+```jsx
+var maxDepth = function (root) {
+  if (root == null) {
+    return 0
+  }
+  let left = maxDepth(root.left)
+  let right = maxDepth(root.right)
+  return 1 + Math.max(left, right)
+}
+
+var maxDepth = function (root) {
+  let depth = 0
+  let res = 0
+  traverse(root)
+  return res
+
+  function traverse(root) {
+    if (root == null) {
+      return
+    }
+    depth++
+    res = Math.max(res, depth)
+    traverse(root.left)
+    traverse(root.right)
+    depth--
+  }
+}
+```
+
+## 03.31
+
+[234. 回文链表 - 力扣（Leetcode）](https://leetcode.cn/problems/palindrome-linked-list/)
+
+思路：递归
+
+代码：
+
+```jsx
+var isPalindrome = function(head) {
+    let left = head
+    function traverse(right) {
+        if (right == null) return true
+        let res = traverse(right.next)
+        res = res && (right.val === left.val)
+        left = left.next
+        return res
+    }
+    return traverse(head)
+};
+```
+
 ## 03.30
 
 [206. 反转链表 - 力扣（Leetcode）](https://leetcode.cn/problems/reverse-linked-list/)
