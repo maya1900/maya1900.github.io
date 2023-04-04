@@ -8,13 +8,82 @@ date: 2023-02-06 22:00:00
 sticky: 1
 ---
 
+## 04.04
+
+[226. 翻转二叉树 - 力扣（Leetcode）](https://leetcode.cn/problems/invert-binary-tree/)
+
+代码：
+
+```jsx
+var invertTree = function (root) {
+  traverse(root);
+  return root;
+
+  function traverse(root) {
+    if (root == null) return;
+    const tmp = root.left;
+    root.left = root.right;
+    root.right = tmp;
+    traverse(root.left);
+    traverse(root.right);
+  }
+};
+```
+
+## 04.03
+
+[101. 对称二叉树 - 力扣（Leetcode）](https://leetcode.cn/problems/symmetric-tree/)
+
+代码：
+
+```jsx
+var isSymmetric = function (root) {
+  if (root == null) return true;
+  return helper(root.left, root.right);
+
+  function helper(left, right) {
+    if (left == null && right == null) return true;
+    if (left == null || right == null || left.val != right.val) return false;
+    return helper(left.left, right.right) && helper(left.right, right.left);
+  }
+};
+```
+
+## 04.02
+
+[剑指 Offer 34. 二叉树中和为某一值的路径 - 力扣（Leetcode）](https://leetcode.cn/problems/er-cha-shu-zhong-he-wei-mou-yi-zhi-de-lu-jing-lcof/)
+
+思路：
+
+回溯
+
+代码：
+
+```jsx
+var pathSum = function (root, target) {
+  const res = [];
+  dfs(root, target, res, []);
+  return res;
+
+  function dfs(root, target, res, list) {
+    if (root == null) return;
+    list.push(root.val);
+    if (root.val == target && root.left == null && root.right == null)
+      res.push(list.slice());
+    dfs(root.left, target - root.val, res, list);
+    dfs(root.right, target - root.val, res, list);
+    list.pop();
+  }
+};
+```
+
 ## 04.01
 
 [剑指 Offer 55 - I. 二叉树的深度 - 力扣（Leetcode）](https://leetcode.cn/problems/er-cha-shu-de-shen-du-lcof/description/)
 
 思路：
 
-1. 回溯。遍历二叉树，前序遍历depth加1，遍历过程记录最大深度，后续遍历depth减1
+1. 回溯。遍历二叉树，前序遍历 depth 加 1，遍历过程记录最大深度，后续遍历 depth 减 1
 2. 动态规划。输入一个节点，返回该节点的最大深度，根据左右子树最大深度推断原二叉树最大深度。
 
 代码：
@@ -22,30 +91,30 @@ sticky: 1
 ```jsx
 var maxDepth = function (root) {
   if (root == null) {
-    return 0
+    return 0;
   }
-  let left = maxDepth(root.left)
-  let right = maxDepth(root.right)
-  return 1 + Math.max(left, right)
-}
+  let left = maxDepth(root.left);
+  let right = maxDepth(root.right);
+  return 1 + Math.max(left, right);
+};
 
 var maxDepth = function (root) {
-  let depth = 0
-  let res = 0
-  traverse(root)
-  return res
+  let depth = 0;
+  let res = 0;
+  traverse(root);
+  return res;
 
   function traverse(root) {
     if (root == null) {
-      return
+      return;
     }
-    depth++
-    res = Math.max(res, depth)
-    traverse(root.left)
-    traverse(root.right)
-    depth--
+    depth++;
+    res = Math.max(res, depth);
+    traverse(root.left);
+    traverse(root.right);
+    depth--;
   }
-}
+};
 ```
 
 ## 03.31
@@ -57,16 +126,16 @@ var maxDepth = function (root) {
 代码：
 
 ```jsx
-var isPalindrome = function(head) {
-    let left = head
-    function traverse(right) {
-        if (right == null) return true
-        let res = traverse(right.next)
-        res = res && (right.val === left.val)
-        left = left.next
-        return res
-    }
-    return traverse(head)
+var isPalindrome = function (head) {
+  let left = head;
+  function traverse(right) {
+    if (right == null) return true;
+    let res = traverse(right.next);
+    res = res && right.val === left.val;
+    left = left.next;
+    return res;
+  }
+  return traverse(head);
 };
 ```
 
@@ -77,7 +146,7 @@ var isPalindrome = function(head) {
 代码：
 
 ```jsx
-var reverseList = function(head) {
+var reverseList = function (head) {
   let pre = null;
   let cur = head;
   while (cur != null) {
@@ -89,12 +158,12 @@ var reverseList = function(head) {
   }
   return pre;
 };
-var reverseList = function(head) {
-    if (head == null || head.next == null) return head;
-    const last = reverseList(head.next)
-    head.next.next = head
-    head.next = null
-    return last
+var reverseList = function (head) {
+  if (head == null || head.next == null) return head;
+  const last = reverseList(head.next);
+  head.next.next = head;
+  head.next = null;
+  return last;
 };
 ```
 
@@ -109,48 +178,49 @@ var reverseList = function(head) {
 代码：
 
 ```jsx
-var sortList = function(head) {
-  return toSortList(head, null)
-}
+var sortList = function (head) {
+  return toSortList(head, null);
+};
 function toSortList(head, tail) {
-  if(head == null) {
-    return head
+  if (head == null) {
+    return head;
   }
-  if(head.next == tail){
-    head.next = null
-    return head
+  if (head.next == tail) {
+    head.next = null;
+    return head;
   }
-  let slow = head, fast = head
-  while(fast != tail) {
-    slow = slow.next
-    fast = fast.next
-    if(fast != tail) {
-      fast = fast.next
+  let slow = head,
+    fast = head;
+  while (fast != tail) {
+    slow = slow.next;
+    fast = fast.next;
+    if (fast != tail) {
+      fast = fast.next;
     }
   }
-  const mid = slow
-  return merge(toSortList(head, mid), toSortList(mid, tail))
+  const mid = slow;
+  return merge(toSortList(head, mid), toSortList(mid, tail));
 }
 function merge(h1, h2) {
-  const dummy = new ListNode()
-  let head = dummy
-  while(h1 != null & h2 != null) {
-    if(h1.val <= h2.val) {
-      head.next = h1
-      h1 = h1.next
+  const dummy = new ListNode();
+  let head = dummy;
+  while ((h1 != null) & (h2 != null)) {
+    if (h1.val <= h2.val) {
+      head.next = h1;
+      h1 = h1.next;
     } else {
-      head.next = h2
-      h2 = h2.next
+      head.next = h2;
+      h2 = h2.next;
     }
-    head = head.next
+    head = head.next;
   }
-  if(h1 != null) {
-    head.next = h1
+  if (h1 != null) {
+    head.next = h1;
   }
-  if(h2 != null) {
-    head.next = h2
+  if (h2 != null) {
+    head.next = h2;
   }
-  return dummy.next
+  return dummy.next;
 }
 ```
 

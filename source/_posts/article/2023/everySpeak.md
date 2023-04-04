@@ -8,6 +8,26 @@ date: 2023-02-07 22:00:00
 sticky: 2
 ---
 
+## 04.04
+
+Dam~~n~~-it! I jus~~t~~ go~~t~~ perfume **all over** my **contracts**.
+
+靠，香水全撒到合同上了。
+
+damn it /dæm ɪt/ 该死
+
+perfume /'pɜːfjuːm/ 香水
+
+contract n. 合同
+
+## 04.03
+
+This coul~~d~~ be-a **perfect** opportunity for revenge.
+
+这是报复的最佳机会。
+
+revenge /rɪˈvendʒ/ v. 复仇，报复
+
 ## 04.01
 
 I thought maybe we coul~~d~~ go to dinner-or get-a drin~~k~~. Blow off some **steam**.
