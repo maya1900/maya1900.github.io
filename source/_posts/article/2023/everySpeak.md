@@ -8,6 +8,38 @@ date: 2023-02-07 22:00:00
 sticky: 2
 ---
 
+## 04.08
+
+I jus~~t~~ don’~~t~~ want~you to get~your hopes up.
+
+我只是不想你报太大希望。
+
+get sth. up 增强，加剧
+
+## 04.07
+
+Now, I’m seeing the worl~~d~~ through fresh eyes.
+
+现在我正在用新的眼光来看待这个世界。
+
+fresh adj. 新的，不同的
+
+## 04.06
+
+I live-alone↑, and my **plants** aren’t this needy.
+
+我独居，我的植物都没有你粘人。
+
+needy /ˈniːdi/ adj. 粘人的，需要关爱的
+
+## 04.05
+
+**Yeah**, cool. You want the **to~~p~~** bunk↑-or the **bottom** bunk?
+
+当然，你想要上铺还是下铺？
+
+bunk /bʌŋk/ n. 铺位，床铺
+
 ## 04.04
 
 Dam~~n~~-it! I jus~~t~~ go~~t~~ perfume **all over** my **contracts**.

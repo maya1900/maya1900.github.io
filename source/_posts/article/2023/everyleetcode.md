@@ -8,6 +8,121 @@ date: 2023-02-06 22:00:00
 sticky: 1
 ---
 
+## 04.08
+
+[103. 二叉树的锯齿形层序遍历 - 力扣（Leetcode）](https://leetcode.cn/problems/binary-tree-zigzag-level-order-traversal/)
+
+代码：
+
+```jsx
+var zigzagLevelOrder = function(root) {
+  const res = []
+  const dfs = (i, root) => {
+    if (!root) return null;
+    if (!Array.isArray(res[i])) res[i] = []
+    // 按位与运算，i&1为1说明是奇数；i&1为0是偶数
+    if (i & 1) {
+      res[i].unshift(root.val)
+    } else {
+      res[i].push(root.val)
+    }
+    dfs(i + 1, root.left)
+    dfs(i + 1, root.right)
+  }
+  dfs(0, root)
+  return res
+};
+```
+
+## 04.07
+
+[102. 二叉树的层序遍历 - 力扣（Leetcode）](https://leetcode.cn/problems/binary-tree-level-order-traversal/)
+
+代码：
+
+```jsx
+var levelOrder = function(root) {
+    const res = []
+    if(root == null) return res
+    const q = []
+    q.push(root)
+    while(q.length > 0) {
+        let len = q.length
+        let level = []
+        for(let i = 0; i < len; i++) {
+            const cur = q.shift()
+            level.push(cur.val)
+            if(cur.left != null) {
+                q.push(cur.left)
+            }
+            if(cur.right != null) {
+                q.push(cur.right)
+            }
+        }
+        res.push(level)
+    }
+    return res
+};
+```
+
+## 04.06
+
+[236. 二叉树的最近公共祖先 - 力扣（Leetcode）](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/description/)
+
+思路：
+
+如果空或者root等于p或q，说明找到，返回root；
+
+如果left和right都不为空，则说明root是最近公共节点
+
+如果left空right不为空，则返回right，反之一样
+
+如果left和right都是空，返回任一即可
+
+代码：
+
+```jsx
+var lowestCommonAncestor = function(root, p, q) {
+    const traverse = (root, p, q) => {
+      if (!root || root == p || root == q) return root;
+      let left = traverse(root.left, p, q);
+      let right = traverse(root.right, p, q);
+      if (left != null && right != null) {
+        return root;
+      }
+      if (left == null) return right;
+      return left;
+    };
+    return traverse(root, p, q);
+};
+```
+
+## 04.05
+
+[543. 二叉树的直径 - 力扣（Leetcode）](https://leetcode.cn/problems/diameter-of-binary-tree/)
+
+思路：
+
+递归。
+
+代码：
+
+```jsx
+var diameterOfBinaryTree = function(root) {
+    let count = 0
+    maxDepth(root)
+    return count
+
+    function maxDepth(root) {
+        if(root == null) return 0
+        const left = maxDepth(root.left)
+        const right = maxDepth(root.right)
+        count = Math.max(count, left + right)
+        return 1 + Math.max(left, right)
+    }
+};
+```
+
 ## 04.04
 
 [226. 翻转二叉树 - 力扣（Leetcode）](https://leetcode.cn/problems/invert-binary-tree/)
