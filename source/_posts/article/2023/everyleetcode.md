@@ -5,7 +5,6 @@ tags:
 categories: js
 cover: https://may-data.oss-cn-hangzhou.aliyuncs.com/myartilepic/lofislime_1x.png
 date: 2023-02-06 22:00:00
-sticky: 1
 ---
 
 ## 04.08
@@ -15,22 +14,22 @@ sticky: 1
 代码：
 
 ```jsx
-var zigzagLevelOrder = function(root) {
-  const res = []
+var zigzagLevelOrder = function (root) {
+  const res = [];
   const dfs = (i, root) => {
     if (!root) return null;
-    if (!Array.isArray(res[i])) res[i] = []
+    if (!Array.isArray(res[i])) res[i] = [];
     // 按位与运算，i&1为1说明是奇数；i&1为0是偶数
     if (i & 1) {
-      res[i].unshift(root.val)
+      res[i].unshift(root.val);
     } else {
-      res[i].push(root.val)
+      res[i].push(root.val);
     }
-    dfs(i + 1, root.left)
-    dfs(i + 1, root.right)
-  }
-  dfs(0, root)
-  return res
+    dfs(i + 1, root.left);
+    dfs(i + 1, root.right);
+  };
+  dfs(0, root);
+  return res;
 };
 ```
 
@@ -41,27 +40,27 @@ var zigzagLevelOrder = function(root) {
 代码：
 
 ```jsx
-var levelOrder = function(root) {
-    const res = []
-    if(root == null) return res
-    const q = []
-    q.push(root)
-    while(q.length > 0) {
-        let len = q.length
-        let level = []
-        for(let i = 0; i < len; i++) {
-            const cur = q.shift()
-            level.push(cur.val)
-            if(cur.left != null) {
-                q.push(cur.left)
-            }
-            if(cur.right != null) {
-                q.push(cur.right)
-            }
-        }
-        res.push(level)
+var levelOrder = function (root) {
+  const res = [];
+  if (root == null) return res;
+  const q = [];
+  q.push(root);
+  while (q.length > 0) {
+    let len = q.length;
+    let level = [];
+    for (let i = 0; i < len; i++) {
+      const cur = q.shift();
+      level.push(cur.val);
+      if (cur.left != null) {
+        q.push(cur.left);
+      }
+      if (cur.right != null) {
+        q.push(cur.right);
+      }
     }
-    return res
+    res.push(level);
+  }
+  return res;
 };
 ```
 
@@ -71,29 +70,29 @@ var levelOrder = function(root) {
 
 思路：
 
-如果空或者root等于p或q，说明找到，返回root；
+如果空或者 root 等于 p 或 q，说明找到，返回 root；
 
-如果left和right都不为空，则说明root是最近公共节点
+如果 left 和 right 都不为空，则说明 root 是最近公共节点
 
-如果left空right不为空，则返回right，反之一样
+如果 left 空 right 不为空，则返回 right，反之一样
 
-如果left和right都是空，返回任一即可
+如果 left 和 right 都是空，返回任一即可
 
 代码：
 
 ```jsx
-var lowestCommonAncestor = function(root, p, q) {
-    const traverse = (root, p, q) => {
-      if (!root || root == p || root == q) return root;
-      let left = traverse(root.left, p, q);
-      let right = traverse(root.right, p, q);
-      if (left != null && right != null) {
-        return root;
-      }
-      if (left == null) return right;
-      return left;
-    };
-    return traverse(root, p, q);
+var lowestCommonAncestor = function (root, p, q) {
+  const traverse = (root, p, q) => {
+    if (!root || root == p || root == q) return root;
+    let left = traverse(root.left, p, q);
+    let right = traverse(root.right, p, q);
+    if (left != null && right != null) {
+      return root;
+    }
+    if (left == null) return right;
+    return left;
+  };
+  return traverse(root, p, q);
 };
 ```
 
@@ -108,18 +107,18 @@ var lowestCommonAncestor = function(root, p, q) {
 代码：
 
 ```jsx
-var diameterOfBinaryTree = function(root) {
-    let count = 0
-    maxDepth(root)
-    return count
+var diameterOfBinaryTree = function (root) {
+  let count = 0;
+  maxDepth(root);
+  return count;
 
-    function maxDepth(root) {
-        if(root == null) return 0
-        const left = maxDepth(root.left)
-        const right = maxDepth(root.right)
-        count = Math.max(count, left + right)
-        return 1 + Math.max(left, right)
-    }
+  function maxDepth(root) {
+    if (root == null) return 0;
+    const left = maxDepth(root.left);
+    const right = maxDepth(root.right);
+    count = Math.max(count, left + right);
+    return 1 + Math.max(left, right);
+  }
 };
 ```
 

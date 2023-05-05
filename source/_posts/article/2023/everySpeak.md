@@ -5,7 +5,6 @@ tags:
 categories: 英语
 cover: https://may-data.oss-cn-hangzhou.aliyuncs.com/myartilepic/bevis.png
 date: 2023-02-07 22:00:00
-sticky: 2
 ---
 
 ## 04.08
